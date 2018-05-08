@@ -109,3 +109,46 @@ footer h3 {
     text-align: center;
     font-weight: 400;
 }
+
+.sign_in {
+    background-color: black;
+}
+
+.sign_in h1 {
+    margin-top: 10rem;
+}
+
+.sign_in img {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+}
+
+.sign_in_container {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+form {
+    margin-left: 1rem;
+    margin-top: 4rem;
+}
+
+input {
+    width: 30rem;
+    background-color: rgba(255, 255, 255, .8);
+    border: none;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    text-align: right;
+    width: 100%;
+    padding-right: 1rem;
+}
