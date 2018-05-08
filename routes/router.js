@@ -5,7 +5,7 @@ const resController = require('../controllers/responseController')
 router.route('/user/:id/:space_id')
     .get(controller.getImage)
     .delete(controller.destroyImage, controller.destroyReference, resController.confirmDelete)
-    // .put(controller.update, resController.handleUpdate)
+    .put(controller.update, resController.handleUpdate)
 
 // getCustomFeed
 router.route('/user/:id/')

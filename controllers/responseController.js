@@ -34,12 +34,12 @@ module.exports = {
         })
     },
 
-    // confirmSelect(err, req, res, next) {
-    //     res.json({
-    //       status: 'ok',
-    //       data: res.locals.current
-    //     })
-    // },
+    handleUpdate(err, req, res, next) {
+        res.json({
+            status: 'ok',
+            data: res.locals.newItem
+        })
+    },
 
     confirmDelete(err, req, res, next){
         res.json({

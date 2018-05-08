@@ -47,14 +47,14 @@ module.exports = {
         `, space_id);
     },
 
-    update(image) {
+    update(space_id) {
         return db.one(`
                 UPDATE space
                 SET
                 description = $/description/,
                 WHERE space_id = $/space_id/
                 returning *
-            `, image);
+            `, space_id);
     },
 
     deleteImage(space_id){

@@ -54,7 +54,10 @@ module.exports = {
 
     update(req, res, next) {
         db.update(req.params.space_id)
-        .then(() => next())
+        .then(data => {
+            res.locals.newItem = data
+            next();
+        })
         .catch(err => next(err));
     },
 
