@@ -3,8 +3,8 @@ const logger       = require('morgan');
 const bodyParser   = require('body-parser');
 const path         = require('path');
 const fetch        = require('node-fetch');
-const quotesRouter = require('./routes/quotes');
 const dotenv       = require('dotenv');
+const router       = require('./routes/router.js');
 dotenv.config();
 
 const app = express();
@@ -15,10 +15,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'dist')));
 
-
-app.use('/', (req, res) => {
-    console.log(res)
-});
+app.use(router);
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);

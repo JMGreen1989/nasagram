@@ -1,8 +1,36 @@
-function sendOkResponse(req, res) {
+function sendSpace(req, res) {
   res.json({
     status: 'ok',
-    data: res.locals.quote || res.locals.quotes
+    data: res.locals.space
   })
+}
+
+function sendUsers(req, res) {
+  res.json({
+    status: 'ok',
+    data: res.locals.user
+  })
+}
+
+function sendNewImage(req, res) {
+  res.json({
+    status: 'ok',
+    data: res.locals.image
+  })
+}
+
+function sendRef(req, res) {
+  res.json({
+    status: 'ok',
+    data: res.locals.refTable
+  })
+}
+
+function customFeed(req, res) {
+    res.json({
+        status: 'ok',
+        data: res.locals.customFeed
+    })
 }
 
 function sendErrorResponse(err, req, res, next) {
@@ -13,6 +41,10 @@ function sendErrorResponse(err, req, res, next) {
 }
 
 module.exports = {
-  sendOkResponse,
-  sendErrorResponse
+  sendUsers,
+  sendSpace,
+  sendRef,
+  sendNewImage,
+  customFeed,
+  sendErrorResponse,
 }
