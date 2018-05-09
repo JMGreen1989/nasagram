@@ -1,23 +1,14 @@
 module.exports = {
     sendNewImage(req, res) {
-      res.json({
-        status: 'ok',
-        data: res.locals.image
-      })
+      res.json(res.locals.image)
     },
 
     sendRef(req, res) {
-      res.json({
-        status: 'ok',
-        data: res.locals.refTable
-      })
+      res.json(res.locals.refTable)
     },
 
     customFeed(req, res) {
-        res.json({
-            status: 'ok',
-            data: res.locals.customFeed
-        })
+        res.json(res.locals.customFeed)
     },
 
     sendErrorResponse(err, req, res, next) {

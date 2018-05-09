@@ -6798,12 +6798,18 @@ h5 {
     padding-top: 1rem;
 }
 
+.image {
+    height: 100%;
+    width: 100%;
+}
+
 .container {
     height: 200px;
     width: 200px;
     background-color: white;
     margin: auto;
     margin-bottom: 2rem;
+    position: relative;
 }
 
 .description {
@@ -6819,4 +6825,5 @@ h5 {
 .fa-eye {
     margin-left: .5rem;
     color: rgba(0,0,0,.3);
+    position: absolute;
 }

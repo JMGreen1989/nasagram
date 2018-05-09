@@ -10,13 +10,23 @@ export default class UserProfile extends Component {
         }
     }
 
-
     onDrop(files) {
-            const formatedFiles = []
-            files.forEach(file => formatedFiles.push(URL.createObjectURL(file)))
-            this.setState({
-              files: formatedFiles
-            });
+        const formatedFiles = []
+        files.forEach(file => formatedFiles.push(URL.createObjectURL(file)))
+        this.setState({
+          files: formatedFiles
+        });
+    }
+
+    componentWillMount() {
+        fetch(`/user/1`)
+            .then((response) => response.json())
+            .then((user) => {
+                this.setState({
+                    descriptions: user
+                })
+        })
+        .catch((err) => console.log(err))
     }
 
     render(){
@@ -29,13 +39,23 @@ export default class UserProfile extends Component {
             console.log(this.state.files)
         }
 
+        if(this.state.descriptions){
+            console.log(this.state.descriptions)
+            let description = this.state.descriptions.map((elem, i) => (
+                elem.description
+            ))
+            console.log(description)
+        }
+
+
+
         return (
             <div className='body'>
                 <header>
                     <ul>
                         <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                         <li className='logo'>Nasagram</li>
-                        <li><i className="fas fa-user"></i><i class="fas fa-search"></i></li>
+                        <li><i className="fas fa-user"></i><i className="fas fa-search"></i></li>
                     </ul>
                 </header>
 
@@ -60,34 +80,34 @@ export default class UserProfile extends Component {
 
                 <div className="saved">
                         <div className="container">
+                            <i className="fas fa-eye"></i>
                             <div className="image"></div>
                             <div className="description">description</div>
-                            <i class="fas fa-eye"></i>
                         </div>
                         <div className="container">
+                            <i className="fas fa-eye"></i>
                             <div className="image"></div>
                             <div className="description">description</div>
-                            <i class="fas fa-eye"></i>
                         </div>
                         <div className="container">
+                            <i className="fas fa-eye"></i>
                             <div className="image"></div>
                             <div className="description">description</div>
-                            <i class="fas fa-eye"></i>
                         </div>
                         <div className="container">
+                            <i className="fas fa-eye"></i>
                             <div className="image"></div>
                             <div className="description">description</div>
-                            <i class="fas fa-eye"></i>
                         </div>
                         <div className="container">
+                            <i className="fas fa-eye"></i>
                             <div className="image"></div>
                             <div className="description">description</div>
-                            <i class="fas fa-eye"></i>
                         </div>
                         <div className="container">
+                            <i className="fas fa-eye"></i>
                             <div className="image"></div>
                             <div className="description">description</div>
-                            <i class="fas fa-eye"></i>
                         </div>
                 </div>
 

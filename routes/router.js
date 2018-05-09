@@ -11,7 +11,7 @@ router.route('/user/:id/:space_id')
 // this displays the api for the user
 router.route('/user/:id/api')
 
-// getCustomFeed
+// user profile
 router.route('/user/:id')
     .get(controller.getCustomFeed, resController.customFeed)
     .post(controller.addImage, controller.createReference, resController.sendRef)
