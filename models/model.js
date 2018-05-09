@@ -30,6 +30,17 @@ module.exports = {
         `, id);
     },
 
+    handleAddUser(user) {
+      return db.one(`
+              INSERT INTO users (
+              username, password
+              ) VALUES (
+              $/username/, $/password/
+              )
+               RETURNING *
+        `, user);
+    },
+
     handleSubmit(image) {
         return db.one(`
                 INSERT INTO space

@@ -6597,14 +6597,14 @@ h2 {
 }
 
 h4 {
-    margin-left: 3.5rem;
+    margin-left: 3rem;
     padding-bottom: 1rem;
     color: rgba(0,0,0,.4);
     font-size: .7rem;
 }
 
 .fa-globe {
-    font-size: 2rem;
+    font-size: 2rem!important;
     margin-right: 1rem;
 }
 

@@ -29,6 +29,18 @@ module.exports = {
           });
     },
 
+
+    addUser(req, res, next) {
+      db.handleAddUser(req.body)
+      .then(data => {
+        res.locals.user = data.user;
+        next();
+      })
+      .catch(err => {
+        next(err);
+      });
+    },
+
     getImage(req, res, next) {
         db.findOne(req.params.space_id)
             .then(data => {

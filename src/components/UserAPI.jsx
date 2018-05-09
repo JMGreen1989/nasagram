@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import './UserAPI.css';
+import './userAPI.css';
 
 export default class UserAPI extends Component {
     constructor(props){
         super(props)
         this.state={}
+
+        this.save = this.save.bind(this)
     }
 
     componentWillMount(){
@@ -14,10 +16,19 @@ export default class UserAPI extends Component {
           .catch(err => console.log(err))
     }
 
+    save(id){
+        console.log(`im saved to the database: ${id}`)
+        // this is all we want saved into the db:
+        // id.img_src
+        // id.full_name
+    }
+
+
     render(){
 
         if(this.state.api) {
             const crop = this.state.api.splice(0,10);
+            console.log(crop)
             var item = crop.map((item, i) => {
                 return (
                     <div key={i} className='public_api'>
@@ -25,7 +36,9 @@ export default class UserAPI extends Component {
                             <h2>Nasa's API</h2>
                             <h4>leveraging open data</h4>
                         <img src={item.img_src}/>
-                        <i className="fas fa-heart"></i>
+                        <div onClick={() => this.save(item.id)}>
+                            <i className="fas fa-heart"></i>
+                        </div>
                         <h3><b>{item.camera.name}</b> {item.camera.full_name}</h3>
                     </div>
                 )

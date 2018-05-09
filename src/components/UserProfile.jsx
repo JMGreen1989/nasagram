@@ -41,10 +41,13 @@ export default class UserProfile extends Component {
 
         if(this.state.user){
             console.log(this.state.user)
-            let description = this.state.user.map((elem, i) => (
-                elem.description
+            var post = this.state.user.map((elem, i) => (
+                <div className="container">
+                    <i className="fas fa-eye"></i>
+                    <img className="image" src={elem.image}/>
+                    <div className="description">{elem.description}</div>
+                </div>
             ))
-            console.log(description)
         }
 
         return (
@@ -77,36 +80,7 @@ export default class UserProfile extends Component {
                 </div>
 
                 <div className="saved">
-                        <div className="container">
-                            <i className="fas fa-eye"></i>
-                            <div className="image"></div>
-                            <div className="description">description</div>
-                        </div>
-                        <div className="container">
-                            <i className="fas fa-eye"></i>
-                            <div className="image"></div>
-                            <div className="description">description</div>
-                        </div>
-                        <div className="container">
-                            <i className="fas fa-eye"></i>
-                            <div className="image"></div>
-                            <div className="description">description</div>
-                        </div>
-                        <div className="container">
-                            <i className="fas fa-eye"></i>
-                            <div className="image"></div>
-                            <div className="description">description</div>
-                        </div>
-                        <div className="container">
-                            <i className="fas fa-eye"></i>
-                            <div className="image"></div>
-                            <div className="description">description</div>
-                        </div>
-                        <div className="container">
-                            <i className="fas fa-eye"></i>
-                            <div className="image"></div>
-                            <div className="description">description</div>
-                        </div>
+                    {post}
                 </div>
 
                 <h5>Thank you for visiting Nasagram ®<br/>Important notice we would like to give design credit to Instagram ®</h5>
