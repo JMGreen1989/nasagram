@@ -23,7 +23,7 @@ export default class UserProfile extends Component {
             .then((response) => response.json())
             .then((user) => {
                 this.setState({
-                    descriptions: user
+                    user: user
                 })
         })
         .catch((err) => console.log(err))
@@ -39,15 +39,13 @@ export default class UserProfile extends Component {
             console.log(this.state.files)
         }
 
-        if(this.state.descriptions){
-            console.log(this.state.descriptions)
-            let description = this.state.descriptions.map((elem, i) => (
+        if(this.state.user){
+            console.log(this.state.user)
+            let description = this.state.user.map((elem, i) => (
                 elem.description
             ))
             console.log(description)
         }
-
-
 
         return (
             <div className='body'>

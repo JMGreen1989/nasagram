@@ -7,7 +7,23 @@ export default class Single extends Component {
     this.state = {}
   }
 
+    componentWillMount() {
+        fetch(`/user/1/4`)
+            .then((response) => response.json())
+            .then((post) => {
+                this.setState({
+                    post: post
+                })
+        })
+        .catch((err) => console.log(err))
+    }
+
   render(){
+
+      if(this.state.post){
+          console.log(this.state.post)
+      }
+
       return (
           <div className='body'>
               <header>
