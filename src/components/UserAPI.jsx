@@ -1,21 +1,10 @@
 import React, { Component } from 'react';
 import './UserAPI.css';
-import Dropzone from 'react-dropzone'
 
 export default class UserAPI extends Component {
     constructor(props){
         super(props)
-        this.state={
-            files: []
-        }
-    }
-
-    onDrop(files) {
-            const formatedFiles = []
-            files.forEach(file => formatedFiles.push(URL.createObjectURL(file)))
-            this.setState({
-              files: formatedFiles
-            });
+        this.state={}
     }
 
     componentWillMount(){
@@ -26,14 +15,6 @@ export default class UserAPI extends Component {
     }
 
     render(){
-
-        let images = this.state.files.map((photo, i) => (
-            <img key={i} src={photo}/>
-        ))
-
-        if(this.state.files.length > 0){
-            console.log(this.state.files)
-        }
 
         if(this.state.api) {
             const crop = this.state.api.splice(0,10);
@@ -58,18 +39,9 @@ export default class UserAPI extends Component {
                     <ul>
                         <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                         <li className='logo'>Nasagram</li>
-                        <li><i className="fas fa-user"></i> <i className="fas fa-address-card"></i></li>
+                        <li><i className="fas fa-user"></i></li>
                     </ul>
                 </header>
-
-                <span className='dropzone'>
-                    <i className="fa fa-globe" aria-hidden="true"></i>
-                    <h2>Nasa's API</h2>
-                    <Dropzone onDrop={this.onDrop.bind(this)}>
-                        <p>Drag and drop your images here</p>
-                    </Dropzone>
-                    <h5>Important notice<br/>We would like to give design<br/>credit to Instagram ®</h5>
-                </span>
 
                 <section>
                     {item}

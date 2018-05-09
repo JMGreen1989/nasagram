@@ -11,8 +11,9 @@ import Public from './components/Public';
 import UserAPI from './components/UserAPI';
 import Login from './components/Login';
 import Single from './components/Single';
+import UserProfile from './components/UserProfile';
 
 fontawesome.library.add(brands, solid);
 
 // mount our App at #container
-ReactDOM.render(<App />, document.querySelector('#container'));
+ReactDOM.render(<UserProfile />, document.querySelector('#container'));

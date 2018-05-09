@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css?family=Oleo+Script');
+
+.body {
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0,0,0,.05);
+    overflow: hidden;
+}
+
+header ul {
+    display: flex;
+    justify-content: space-around;
+    margin: 1.5rem;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    width: 100%;
+    background-color: white;
+}
+
+
+.fa-globe {
+    font-size: 8rem;
+}
+
+.fa-user {
+    font-size: 1.2rem;
+    color: rgba(0,0,0,.2);
+    margin-right: .5rem;
+}
+
+.fa-heart {
+    font-size: 1.2rem;
+    color: rgba(0,0,0,.2);
+    margin-top: .5rem;
+}
+
+.logo {
+    font-family: 'Oleo Script', cursive;
+    font-size: 2.5rem;
+    line-height: 1rem;
+}
+
+.fa-camera {
+    font-size: 1.2rem;
+    color: rgba(0,0,0,.2);
+}
+
+.profile {
+    position: absolute;
+    top: 12%;
+    width: 100%;
+}
+
+.profile ul {
+    display: flex;
+    justify-content: center;
+}
+
+.dropzone div {
+    height: 150px!important;
+    width: 150px!important;
+}
+
+.dropzone p {
+    text-align: center;
+    padding-top: 3.5rem;
+    font-size: .8rem;
+}
+
+h5 {
+    font-size: .8rem;
+    text-align: center;
+    padding: 1rem;
+    color: rgba(0,0,0,.3);
+    position: absolute;
+    bottom: 0;
+    width: 100%
+}
+
+.username {
+    padding-right: 2rem;
+}
+
+.username h1 {
+    font-family: 'Oleo Script', cursive;
+    font-size: 4rem;
+}
+
+.saved {
+    width: 60%;
+    height: 55vh;
+    overflow: scroll;
+    border-top: 1px solid rgba(0,0,0,.3);
+    border-bottom: 1px solid rgba(0,0,0,.3);
+    position: absolute;
+    top: 35%;
+    left: 20%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 1rem;
+}
+
+.container {
+    height: 200px;
+    width: 200px;
+    background-color: white;
+    margin: auto;
+    margin-bottom: 2rem;
+}
+
+.description {
+    position: absolute;
+    bottom: 0;
+}
+
+.container ul {
+    display: flex;
+}
+
+.fa-times {
+    margin-left: .5rem;
+}
+
+.fa-times {
+    margin-left: .5rem;
+    color: rgba(0,0,0,.3);
+}
+
+.fa-pencil-alt {
+    margin-left: .5rem;
+    color: rgba(0,0,0,.3);
+}
