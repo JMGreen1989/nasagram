@@ -33,7 +33,7 @@ export default class Register extends React.Component {
         <br/>
         <button type="submit">Register</button>
       </form>
-      )
+    )
 
 }
 }

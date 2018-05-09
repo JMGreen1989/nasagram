@@ -11,6 +11,13 @@ module.exports = {
         res.json(res.locals.customFeed)
     },
 
+    handleAddingUser(req, res) {
+      res.json({
+        status: 'ok',
+        data: res.locals.user
+      })
+    },
+
     sendErrorResponse(err, req, res, next) {
       res.json({
         status: 'Error',

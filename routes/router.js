@@ -19,6 +19,9 @@ router.route('/user/:id')
 // this is the login page
 router.route('/user')
 
+router.route('/register')
+    .post(controller.addUser, resController.handleAddingUser);
+
 // this is the pubic api page
 router.route('/')
 
