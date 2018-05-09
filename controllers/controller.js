@@ -32,7 +32,6 @@ module.exports = {
     getImage(req, res, next) {
         db.findOne(req.params.space_id)
             .then(data => {
-                // res.locals.current = data
                 res.send(data)
                 next();
             })

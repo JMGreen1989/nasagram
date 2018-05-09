@@ -7,6 +7,10 @@ import solid           from '@fortawesome/fontawesome-free-solid';
 import 'bulma/bulma.sass';
 
 import App from './components/App';
+import Public from './components/Public';
+import UserAPI from './components/UserAPI';
+import Login from './components/Login';
+import Single from './components/Single';
 
 fontawesome.library.add(brands, solid);
 

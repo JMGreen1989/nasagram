@@ -67,13 +67,8 @@
   "webpackConfig": {
     "main": "src/main.jsx",
     "outputDir": "dist",
-    "vendors": [
-      "react",
-      "react-dom",
-      "prop-types"
-    ],
     "html": {
-      "title": "Jason’s Application",
+      "title": "NASAGRAM",
       "appMountId": "container"
     }
   }
