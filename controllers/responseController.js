@@ -11,6 +11,10 @@ module.exports = {
         res.json(res.locals.customFeed)
     },
 
+    getSingle(req, res) {
+        res.json(res.locals.single)
+    },
+
     handleAddingUser(req, res) {
       res.json({
         status: 'ok',

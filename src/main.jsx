@@ -17,4 +17,4 @@ import Register from './components/Register';
 fontawesome.library.add(brands, solid);
 
 // mount our App at #container
-ReactDOM.render(<Register />, document.querySelector('#container'));
+ReactDOM.render(<Single />, document.querySelector('#container'));

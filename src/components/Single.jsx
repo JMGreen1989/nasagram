@@ -16,12 +16,26 @@ export default class Single extends Component {
                 })
         })
         .catch((err) => console.log(err))
+
+        fetch(`/user/1`)
+            .then((response) => response.json())
+            .then((user) => {
+                this.setState({
+                    user: user
+                })
+        })
+        .catch((err) => console.log(err))
     }
 
   render(){
 
+      if(this.state.user){
+        var user = this.state.user[0].username
+      }
+
       if(this.state.post){
-          console.log(this.state.post)
+          var image = this.state.post.image
+          var description = this.state.post.description
       }
 
       return (
@@ -35,20 +49,18 @@ export default class Single extends Component {
               </header>
 
               <div className='single'>
-                <div className='image'></div>
-                <div className='tab'></div>
+                  <img className='image' src={image} />
+                  <div className='tab'>
+                        <i className="fa fa-globe" aria-hidden="true"></i>
+                        <h1>{user}</h1>
+                        <h2>{description}</h2>
+                        <input placeholder="edit me"/><i class="fas fa-pencil-alt"></i>
+                        <i class="fas fa-times"></i>
+                  </div>
               </div>
-
 
               <footer><i className="fas fa-arrow-left"></i></footer>
           </div>
       )
   }
 }
-
-
-// <ul>
-//     <li><p className='description'>description</p></li>
-//     <li><i className="fas fa-times"></i></li>
-//     <li><i className="fas fa-pencil-alt"></i></li>
-// </ul>
