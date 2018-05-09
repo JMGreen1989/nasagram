@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Oleo+Script);@import url(https://fonts.googleapis.com/css?family=Oleo+Script);@import url(https://fonts.googleapis.com/css?family=Oleo+Script);/*! bulma.io v0.7.1 | MIT License | github.com/jgthms/bulma */
+@import url(https://fonts.googleapis.com/css?family=Oleo+Script);@import url(https://fonts.googleapis.com/css?family=Oleo+Script);@import url(https://fonts.googleapis.com/css?family=Oleo+Script);@import url(https://fonts.googleapis.com/css?family=Oleo+Script);/*! bulma.io v0.7.1 | MIT License | github.com/jgthms/bulma */
 @keyframes spinAround {
   from {
     transform: rotate(0deg); }
@@ -6651,6 +6651,70 @@ header {
     background-color: white;
 }
 
+footer {
+    position: absolute;
+    bottom: 0;
+    padding: 2rem;
+}
+
+.single {
+    height: 450px;
+    width: 700px;
+    margin: auto;
+    background-color: white;
+    display: flex;
+    margin-top: 8rem;
+}
+
+.image {
+    border: 1px solid rgba(0,0,0,.2);
+    width: 70%;
+}
+
+.tab {
+    border: 1px solid rgba(0,0,0,.2);
+    width: 30%;
+}
+
+.fa-globe {
+    font-size: 8rem;
+}
+
+.fa-user {
+    color: rgba(0,0,0,.2);
+    margin-right: .5rem;
+}
+
+.fa-times {
+    margin-left: .5rem;
+    color: rgba(0,0,0,.3);
+}
+
+.fa-pencil-alt {
+    margin-left: .5rem;
+    color: rgba(0,0,0,.3);
+}
+.body {
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0,0,0,.05);
+    overflow: hidden;
+}
+
+header ul {
+    display: flex;
+    justify-content: space-around;
+    margin: 1.5rem;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    width: 100%;
+    background-color: white;
+}
+
 
 .fa-globe {
     font-size: 8rem;
@@ -6747,20 +6811,12 @@ h5 {
     bottom: 0;
 }
 
-.container ul {
-    display: flex;
-}
-
-.fa-times {
-    margin-left: .5rem;
-}
-
-.fa-times {
+.fa-search {
     margin-left: .5rem;
     color: rgba(0,0,0,.3);
 }
 
-.fa-pencil-alt {
+.fa-eye {
     margin-left: .5rem;
     color: rgba(0,0,0,.3);
 }

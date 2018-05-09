@@ -35,7 +35,7 @@ export default class UserProfile extends Component {
                     <ul>
                         <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                         <li className='logo'>Nasagram</li>
-                        <li><i className="fas fa-user"></i></li>
+                        <li><i className="fas fa-user"></i><i class="fas fa-search"></i></li>
                     </ul>
                 </header>
 
@@ -62,50 +62,32 @@ export default class UserProfile extends Component {
                         <div className="container">
                             <div className="image"></div>
                             <div className="description">description</div>
-                            <ul>
-                                <li><i className="fas fa-times"></i></li>
-                                <li><i className="fas fa-pencil-alt"></i></li>
-                            </ul>
+                            <i class="fas fa-eye"></i>
                         </div>
                         <div className="container">
                             <div className="image"></div>
                             <div className="description">description</div>
-                            <ul>
-                                <li><i className="fas fa-times"></i></li>
-                                <li><i className="fas fa-pencil-alt"></i></li>
-                            </ul>
+                            <i class="fas fa-eye"></i>
                         </div>
                         <div className="container">
                             <div className="image"></div>
                             <div className="description">description</div>
-                            <ul>
-                                <li><i className="fas fa-times"></i></li>
-                                <li><i className="fas fa-pencil-alt"></i></li>
-                            </ul>
+                            <i class="fas fa-eye"></i>
                         </div>
                         <div className="container">
                             <div className="image"></div>
                             <div className="description">description</div>
-                            <ul>
-                                <li><i className="fas fa-times"></i></li>
-                                <li><i className="fas fa-pencil-alt"></i></li>
-                            </ul>
+                            <i class="fas fa-eye"></i>
                         </div>
                         <div className="container">
                             <div className="image"></div>
                             <div className="description">description</div>
-                            <ul>
-                                <li><i className="fas fa-times"></i></li>
-                                <li><i className="fas fa-pencil-alt"></i></li>
-                            </ul>
+                            <i class="fas fa-eye"></i>
                         </div>
                         <div className="container">
                             <div className="image"></div>
                             <div className="description">description</div>
-                            <ul>
-                                <li><i className="fas fa-times"></i></li>
-                                <li><i className="fas fa-pencil-alt"></i></li>
-                            </ul>
+                            <i class="fas fa-eye"></i>
                         </div>
                 </div>
 

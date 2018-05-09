@@ -117,20 +117,12 @@ h5 {
     bottom: 0;
 }
 
-.container ul {
-    display: flex;
-}
-
-.fa-times {
-    margin-left: .5rem;
-}
-
-.fa-times {
+.fa-search {
     margin-left: .5rem;
     color: rgba(0,0,0,.3);
 }
 
-.fa-pencil-alt {
+.fa-eye {
     margin-left: .5rem;
     color: rgba(0,0,0,.3);
 }

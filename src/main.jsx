@@ -16,4 +16,4 @@ import UserProfile from './components/UserProfile';
 fontawesome.library.add(brands, solid);
 
 // mount our App at #container
-ReactDOM.render(<UserProfile />, document.querySelector('#container'));
+ReactDOM.render(<Single />, document.querySelector('#container'));
