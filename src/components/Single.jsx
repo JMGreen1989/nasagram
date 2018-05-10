@@ -32,7 +32,9 @@ export default class Single extends Component {
     }
 
         edit(e) {
-          debugger;
+          // debugger;
+          e.persist()
+          e.preventDefault();
         fetch(`/space/${this.state.post.space_id}`, {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
@@ -41,7 +43,9 @@ export default class Single extends Component {
                 'description': e.target.value
             })
              })
-        .then(() => console.log(this.state.post));
+        .then(() => this.setState({
+          description: e.target.value
+        }));
     }
 
     destroy() {
@@ -78,7 +82,8 @@ export default class Single extends Component {
                         <i className="fa fa-globe" aria-hidden="true"></i>
                         <h1>{user}</h1>
                         <h2>{description}</h2>
-                        <input name={description} placeholder="edit me"/>
+                        <input name="description" placeholder="edit me"
+                        onChange={this.edit}/>
                         <div onClick={this.edit}><i className="fas fa-pencil-alt"></i></div>
                         <br/>
                        <div onClick={this.destroy}><i className="fas fa-times"></i></div>
