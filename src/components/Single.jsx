@@ -6,13 +6,16 @@ import './single.css';
 export default class Single extends Component {
   constructor(props) {
     super(props)
-    this.state = {};
+    this.state = {
+      // description: ''
+    };
      this.edit = this.edit.bind(this);
      this.destroy = this.destroy.bind(this);
+     this.space = this.space.bind(this);
   }
 
-    componentWillMount() {
-        fetch(`/space/6`)
+  space() {
+    fetch(`/space/6`)
             .then((response) => response.json())
             .then((post) => {
                 this.setState({
@@ -29,6 +32,10 @@ export default class Single extends Component {
                 })
         })
         .catch((err) => console.log(err))
+  }
+
+    componentWillMount() {
+        this.space();
     }
 
         edit(e) {
@@ -45,7 +52,8 @@ export default class Single extends Component {
              })
         .then(() => this.setState({
           description: e.target.value
-        }));
+        }))
+        .then(() => this.space());
     }
 
     destroy() {
