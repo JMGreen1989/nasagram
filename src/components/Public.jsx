@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './public.css';
+import { Link } from 'react-router-dom'
 
 export default class Public extends Component {
     constructor(props){
@@ -37,7 +38,7 @@ export default class Public extends Component {
                     <ul>
                         <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                         <li className='logo'>Nasagram</li>
-                        <li><i className="fas fa-user"></i> <i className="fas fa-edit"></i></li>
+                        <li><Link to="/user"><i className="fas fa-user"></i></Link> <i className="fas fa-edit"></i></li>
                     </ul>
                 </header>
 

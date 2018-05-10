@@ -54,8 +54,8 @@ export default class Single extends Component {
                         <i className="fa fa-globe" aria-hidden="true"></i>
                         <h1>{user}</h1>
                         <h2>{description}</h2>
-                        <input placeholder="edit me"/><i class="fas fa-pencil-alt"></i>
-                        <i class="fas fa-times"></i>
+                        <input placeholder="edit me"/><i className="fas fa-pencil-alt"></i>
+                        <i className="fas fa-times"></i>
                   </div>
               </div>
 

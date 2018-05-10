@@ -11,10 +11,14 @@
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "faker": "^4.1.0",
+    "link-react": "^3.0.0",
     "morgan": "^1.9.0",
     "node-fetch": "^2.1.2",
     "pg-promise": "^8.4.0",
-    "react-dropzone": "^4.2.9"
+    "react-dropzone": "^4.2.9",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-switch": "^2.3.2"
   },
   "devDependencies": {
     "@fortawesome/fontawesome": "^1.1.5",
