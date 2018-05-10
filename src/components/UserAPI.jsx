@@ -6,7 +6,8 @@ export default class UserAPI extends Component {
         super(props)
         this.state={}
 
-        this.save = this.save.bind(this)
+        this.save = this.save.bind(this);
+        // this.pictureData =this.pictureData.bind(this);
     }
 
     componentWillMount(){
@@ -16,11 +17,24 @@ export default class UserAPI extends Component {
           .catch(err => console.log(err))
     }
 
-    save(id){
-        console.log(`im saved to the database: ${id}`)
+
+
+    save(i){
+        debugger;
+        // e.preventDefault();
+        console.log(`im saved to the database: ${i}`)
         // this is all we want saved into the db:
         // id.img_src
         // id.full_name
+        fetch('/user/1', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                'image': this.state.api[i].img_src,
+                'description': this.state.api[i].camera.full_name
+            })
+        })
+        .then(() => console.log(i));
     }
 
 
@@ -36,7 +50,7 @@ export default class UserAPI extends Component {
                             <h2>Nasa's API</h2>
                             <h4>leveraging open data</h4>
                         <img src={item.img_src}/>
-                        <div onClick={() => this.save(item.id)}>
+                        <div onClick={() => this.save(i)}>
                             <i className="fas fa-heart"></i>
                         </div>
                         <h3><b>{item.camera.name}</b> {item.camera.full_name}</h3>

@@ -19,14 +19,15 @@ import Register    from './components/Register';
 fontawesome.library.add(brands, solid);
 
 ReactDOM.render(
-    <BrowserRouter>
-        <Switch>
-            <Route exact path='/' component={Public} />
-            <Route path='/register' component={Register} />
-            <Route path='/user' component={Login} />
-            <Route path='/user/:id' component={UserProfile} />
-            <Route path='/user/:id/api' component={UserAPI} />
-            <Route path='/user/:id/api/:space_id' component={Single} />
-        </Switch>
-    </BrowserRouter>
+    <UserAPI />
 , document.querySelector('#container'));
+// <BrowserRouter>
+//         <Switch>
+//             <Route exact path='/' component={Public} />
+//             <Route path='/register' component={Register} />
+//             <Route path='/user' component={Login} />
+//             <Route path='/user/:id' component={UserProfile} />
+//             <Route path='/user/:id/api' component={UserAPI} />
+//             <Route path='/user/:id/api/:space_id' component={Single} />
+//         </Switch>
+//     </BrowserRouter>
