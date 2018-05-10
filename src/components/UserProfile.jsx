@@ -8,6 +8,7 @@ export default class UserProfile extends Component {
         this.state={
             files: []
         }
+
     }
 
     onDrop(files) {
@@ -40,15 +41,17 @@ export default class UserProfile extends Component {
         }
 
         if(this.state.user){
-            console.log(this.state.user)
-            var post = this.state.user.map((elem, i) => (
-                <div className="container">
-                    <i className="fas fa-eye"></i>
-                    <img className="image" src={elem.image}/>
-                    <div className="description">{elem.description}</div>
-                </div>
-            ))
-        }
+           console.log(this.state.user)
+           var post = this.state.user.map((elem, i) => (
+               <div key={i} className="container">
+                   <img className="image" src={elem.image}/>
+                   <div className="description">
+                       {elem.description}
+                       <Link to={`/user/1/${i}`}><i className="fas fa-eye"></i></Link>
+                   </div>
+               </div>
+           ))
+       }
 
         return (
             <div className='body'>

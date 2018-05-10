@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import './single.css';
+import { Link } from 'react-router-dom'
 
 export default class Single extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {};
+     this.edit = this.edit.bind(this);
+     this.destroy = this.destroy.bind(this);
   }
 
     componentWillMount() {
-        fetch(`/user/1/4`)
+        fetch(`/user/1/5`)
             .then((response) => response.json())
             .then((post) => {
                 this.setState({
@@ -25,6 +28,25 @@ export default class Single extends Component {
                 })
         })
         .catch((err) => console.log(err))
+    }
+
+        edit(i) {
+        fetch(`/user/1/${this.state.post.space_id}`, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                'image': this.state.post.img_src,
+                'description': this.state.post.camera.full_name
+            })
+             })
+        .then(() => console.log(this.state.post));
+    }
+
+    destroy() {
+      fetch(`/user/1/${this.state.post.space_id}`, {
+            method: 'DELETE'
+          })
+        .then(() => console.log(this.state.post));
     }
 
   render(){
@@ -55,7 +77,7 @@ export default class Single extends Component {
                         <h1>{user}</h1>
                         <h2>{description}</h2>
                         <input placeholder="edit me"/><i className="fas fa-pencil-alt"></i>
-                        <i className="fas fa-times"></i>
+                        <Link to={`/user/1`}><div onClick={this.destroy}><i className="fas fa-times"></i></div></Link>
                   </div>
               </div>
 

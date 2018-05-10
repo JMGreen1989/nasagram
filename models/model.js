@@ -84,6 +84,7 @@ module.exports = {
     },
 
     findOne(space_id) {
+      debugger;
         return db.one(`
             SELECT *
             FROM space
