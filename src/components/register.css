@@ -7,6 +7,56 @@
     overflow: hidden;
 }
 
-.logo {
+.new {
     font-family: 'Oleo Script', cursive;
+    font-size: 3rem;
+    line-height: 2.7rem;
+    padding-top: 1rem;
+}
+
+.container {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+    width: 50%;
+    height: 35vh;
+}
+
+h1 {
+    text-align: center;
+    width: 100%;
+}
+
+p {
+    text-align: center;
+    font-size: .8rem;
+    color: rgba(0,0,0,.3);
+}
+
+form {
+    text-align: center;
+    padding: 1rem 0 1rem 0;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.5);
+    padding-bottom: .3rem;
+    width: 250px;
+    margin-bottom: .4rem;
+}
+
+::placeholder {
+    font-size: .8rem;
+    color: rgba(0,0,0,.3);
+}
+
+button {
+    padding: .5rem .9rem .5rem .9rem;
+    margin-top: 1rem;
+    background-color: transparent;
+    color: rgba(0,0,0,.8);
+    text-transform: uppercase;
+    border: 1px solid rgba(0,0,0,.3);
 }

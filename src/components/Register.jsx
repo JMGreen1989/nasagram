@@ -25,18 +25,20 @@ export default class Register extends React.Component {
     render(){
         return(
             <div className="body">
-                <h1 className="logo">Nasagram</h1>
-                <p>Sign up to see photos from Nasa</p>
-                <form onSubmit={this.register}>
-                    <input name="username" type="text" placeholder="Username"
-                    ref={(ref) => {this.username = ref}} />
-                    <br/>
-                    <input name="password" type="text" placeholder="Password"
-                    ref={(ref) => {this.password = ref}}/>
-                    <br/>
-                    <button type="submit">Register</button>
-                </form>
-                <p>Have an account? Login in</p>
+                <div className="container">
+                    <h1 className="new">Nasagram</h1>
+                    <p>Sign up to see photos from Nasa</p>
+                    <form onSubmit={this.register}>
+                        <input name="username" type="text" placeholder="Username"
+                        ref={(ref) => {this.username = ref}} />
+                        <br/>
+                        <input name="password" type="text" placeholder="Password"
+                        ref={(ref) => {this.password = ref}}/>
+                        <br/>
+                        <button type="submit">Register</button>
+                    </form>
+                    <p>Have an account? Login in</p>
+                </div>
             </div>
         )
     }
