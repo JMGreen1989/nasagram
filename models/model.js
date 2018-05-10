@@ -1,4 +1,6 @@
-const db = require ('../config/connection');
+const db         = require ('../config/connection');
+const bcrypt     = require('bcrypt');
+const saltRounds = 10;
 
 module.exports = {
     createRef(user_id, space_id){
@@ -30,15 +32,46 @@ module.exports = {
         `, id);
     },
 
-    handleAddUser(user) {
+    handleAddUser(credentials) {
+      console.log('this is credentials', credentials)
+      bcrypt.hash(credentials.password, saltRounds)
+      .then(hash => {
+        credentials = {
+          username: credentials.username,
+          password: hash
+        }
+      })
+      // console.log('hashed', newUser)
       return db.one(`
               INSERT INTO users (
               username, password
               ) VALUES (
               $/username/, $/password/
               )
-               RETURNING *
-        `, user);
+               RETURNING user_id, username
+        `, credentials);
+    },
+
+    findByUsername(username) {
+        return db.one(`
+        SELECT * FROM users
+        WHERE username = $1
+        `, username);
+    },
+
+    login(credentials) {
+        return findByUsername(credentials.username)
+            .then(user => (
+        // compare the provided password with the password digest
+        bcrypt.compare(credentials.password, user.password)
+        // match is a boolean if hashing the provided password
+        // matches the hashed password
+        .then(match => {
+            if (!match) throw new Error('Credentials do not match');
+            delete user.password;
+            return user;
+            })
+        ));
     },
 
     handleSubmit(image) {

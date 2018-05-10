@@ -18,9 +18,11 @@ router.route('/user/:id')
 
 // this is the login page
 router.route('/user')
+    .post(controller.login)
 
 router.route('/register')
-    .post(controller.addUser, resController.handleAddingUser);
+    // .post(controller.addUser, resController.handleAddingUser);
+    .post(controller.register)
 
 // this is the pubic api page
 router.route('/')

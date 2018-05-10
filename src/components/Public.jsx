@@ -38,7 +38,10 @@ export default class Public extends Component {
                     <ul>
                         <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                         <li className='logo'>Nasagram</li>
-                        <li><Link to="/user"><i className="fas fa-user"></i></Link> <i className="fas fa-edit"></i></li>
+                        <li>
+                            <Link to="/user"><i className="fas fa-user"></i></Link>
+                            <Link to="/register"><i className="fas fa-edit"></i></Link>
+                        </li>
                     </ul>
                 </header>
 
