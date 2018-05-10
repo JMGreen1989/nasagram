@@ -91,8 +91,8 @@ module.exports = {
         `, space_id);
     },
 
-    update(id) {
-      console.log('this is the id', id)
+    update(space_id) {
+      console.log('this is the space_id in models update:', space_id)
         return db.one(`
                 UPDATE space
                 SET
@@ -100,7 +100,7 @@ module.exports = {
                 description = $/description/
                 WHERE space_id = $/space_id/
                 RETURNING *
-            `, id);
+            `, space_id);
     },
 
     deleteImage(space_id){

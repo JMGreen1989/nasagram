@@ -47,6 +47,7 @@ module.exports = {
             .then(data => {
                 res.locals.single = data;
                 next();
+                console.log('this is data in getImage', data)
             })
             .catch(err => {
                 next(err);
@@ -65,10 +66,13 @@ module.exports = {
     },
 
     update(req, res, next) {
-        db.update(req.params.space_id)
+      req.body.space_id = req.params.space_id
+        db.update(req.body)
         .then(data => {
+          console.log('this is req.body.space_id', req.body.space_id)
             res.locals.newItem = data
             next();
+
         })
         .catch(err => next(err));
     },

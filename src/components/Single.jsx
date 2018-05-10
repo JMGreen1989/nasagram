@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './single.css';
 // import { Link } from 'react-router-dom'
+// import InlineEdit from 'react-edit-inline';
 
 export default class Single extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ export default class Single extends Component {
   }
 
     componentWillMount() {
-        fetch(`/user/1/6`)
+        fetch(`/space/6`)
             .then((response) => response.json())
             .then((post) => {
                 this.setState({
@@ -32,7 +33,7 @@ export default class Single extends Component {
 
         edit(e) {
           debugger;
-        fetch(`/user/1/${this.state.post.space_id}`, {
+        fetch(`/space/${this.state.post.space_id}`, {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -44,7 +45,7 @@ export default class Single extends Component {
     }
 
     destroy() {
-      fetch(`/user/1/${this.state.post.space_id}`, {
+      fetch(`/space/${this.state.post.space_id}`, {
             method: 'DELETE'
           })
         .then(() => console.log(this.state.post));
