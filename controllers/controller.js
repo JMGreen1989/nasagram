@@ -43,7 +43,6 @@ module.exports = {
     },
 
     getImage(req, res, next) {
-      debugger;
         db.findOne(req.params.space_id)
             .then(data => {
                 res.locals.single = data;

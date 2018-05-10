@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './single.css';
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 export default class Single extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ export default class Single extends Component {
   }
 
     componentWillMount() {
-        fetch(`/user/1/5`)
+        fetch(`/user/1/6`)
             .then((response) => response.json())
             .then((post) => {
                 this.setState({
@@ -30,13 +30,14 @@ export default class Single extends Component {
         .catch((err) => console.log(err))
     }
 
-        edit(i) {
+        edit(e) {
+          debugger;
         fetch(`/user/1/${this.state.post.space_id}`, {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                'image': this.state.post.img_src,
-                'description': this.state.post.camera.full_name
+                'image': this.state.post.image,
+                'description': e.target.value
             })
              })
         .then(() => console.log(this.state.post));
@@ -76,8 +77,10 @@ export default class Single extends Component {
                         <i className="fa fa-globe" aria-hidden="true"></i>
                         <h1>{user}</h1>
                         <h2>{description}</h2>
-                        <input placeholder="edit me"/><i className="fas fa-pencil-alt"></i>
-                        <Link to={`/user/1`}><div onClick={this.destroy}><i className="fas fa-times"></i></div></Link>
+                        <input name={description} placeholder="edit me"/>
+                        <div onClick={this.edit}><i className="fas fa-pencil-alt"></i></div>
+                        <br/>
+                       <div onClick={this.destroy}><i className="fas fa-times"></i></div>
                   </div>
               </div>
 

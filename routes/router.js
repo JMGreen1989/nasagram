@@ -3,7 +3,7 @@ const controller = require('../controllers/controller');
 const resController = require('../controllers/responseController')
 
 // this displays individual saved images
-router.route('/user/:id/:space_id')
+router.route('/space/:space_id')
     .get(controller.getImage, resController.getSingle)
     .delete(controller.destroyImage, controller.destroyReference, resController.confirmDelete)
     .put(controller.update, resController.handleUpdate)

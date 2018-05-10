@@ -84,7 +84,6 @@ module.exports = {
     },
 
     findOne(space_id) {
-      debugger;
         return db.one(`
             SELECT *
             FROM space
@@ -92,14 +91,16 @@ module.exports = {
         `, space_id);
     },
 
-    update(space_id) {
+    update(id) {
+      console.log('this is the id', id)
         return db.one(`
                 UPDATE space
                 SET
-                description = $/description/,
+                image = $/image/,
+                description = $/description/
                 WHERE space_id = $/space_id/
-                returning *
-            `, space_id);
+                RETURNING *
+            `, id);
     },
 
     deleteImage(space_id){
