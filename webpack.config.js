@@ -15,14 +15,6 @@ const { webpackConfig } = require('./package');
 
 
 // We're using code-splitting. List all the external libraries here
-const vendorPackages = [
-  ... new Set([
-    ...webpackConfig.vendors,
-    'react',
-    'react-dom',
-    'prop-types',
-])];
-
 
 const fontLoaderConfig = {
   name:  '/fonts/[name].[ext]',
@@ -35,7 +27,6 @@ if (!('NODE_ENV' in process.env)) require('dotenv').config();
 module.exports = {
   entry: {
     main:   path.resolve(__dirname, webpackConfig.main),
-    vendor: vendorPackages,
   },
   output: {
     path:     path.resolve(__dirname, webpackConfig.outputDir),

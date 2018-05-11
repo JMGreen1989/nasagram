@@ -7,13 +7,26 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "jwt-js": "^0.5.0",
+    "bcrypt": "^2.0.1",
     "concurrently": "^3.5.1",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "faker": "^4.1.0",
+    "jsonwebtoken": "^8.2.1",
+    "link-react": "^3.0.0",
+    "method-override": "^2.3.10",
     "morgan": "^1.9.0",
     "node-fetch": "^2.1.2",
-    "pg-promise": "^8.4.0"
+    "pg-promise": "^8.4.0",
+    "react-dropzone": "^4.2.9",
+    "react-edit-inline": "^1.0.8",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-switch": "^2.3.2",
+    "redux": "^4.0.0",
+    "redux-form": "^7.3.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome": "^1.1.5",
@@ -66,13 +79,8 @@
   "webpackConfig": {
     "main": "src/main.jsx",
     "outputDir": "dist",
-    "vendors": [
-      "react",
-      "react-dom",
-      "prop-types"
-    ],
     "html": {
-      "title": "Jason’s Application",
+      "title": "NASAGRAM",
       "appMountId": "container"
     }
   }
