@@ -12,11 +12,13 @@ export default class Single extends Component {
      this.destroy = this.destroy.bind(this);
      this.space = this.space.bind(this);
      this.handleSubmit = this.handleSubmit.bind(this);
+     this.getUser = this.getUser.bind(this);
   }
 
   space() {
-    fetch(`/space/1`)
-    // fetch(`/space/${this.props.space_id}`)
+    // fetch(`/space/1`)
+    console.log('this is props', this.props);
+    fetch(`/space/${this.props.match.params.space_id}`)
             .then((response) => response.json())
             .then((post) => {
                 this.setState({
@@ -25,7 +27,11 @@ export default class Single extends Component {
         })
         .catch((err) => console.log(err))
 
-        fetch(`/user/1`)
+        this.getUser();
+  }
+
+  getUser() {
+    fetch(`/user/1`)
             .then((response) => response.json())
             .then((user) => {
                 this.setState({
@@ -65,7 +71,8 @@ export default class Single extends Component {
       fetch(`/space/${this.state.post.space_id}`, {
             method: 'DELETE'
           })
-        .then(() => console.log(this.state.post));
+        // .then(() => console.log(this.state.post))
+        .then(() => this.getUser());;
     }
 
   render(){

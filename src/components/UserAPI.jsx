@@ -51,7 +51,7 @@ export default class UserAPI extends Component {
 
 
         if(this.state.api) {
-            const crop = this.state.api.splice(0,10);
+            const crop = this.state.api.slice();
             console.log(crop)
             var item = crop.map((item, i) => {
                 return (
