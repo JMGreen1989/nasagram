@@ -71,8 +71,8 @@ export default class Single extends Component {
       fetch(`/space/${this.state.post.space_id}`, {
             method: 'DELETE'
           })
-        // .then(() => console.log(this.state.post))
-        .then(() => this.getUser());;
+        .then(() => console.log(this.state.post))
+        .then(() => this.getUser());
     }
 
   render(){
@@ -112,7 +112,7 @@ export default class Single extends Component {
                   </div>
               </div>
 
-              <footer><i className="fas fa-arrow-left"></i></footer>
+              <Link to={`/user/1`}><footer><i className="fas fa-arrow-left"></i></footer></Link>
           </div>
       )
   }

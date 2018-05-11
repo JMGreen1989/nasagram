@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './userProfile.css';
 import Dropzone from 'react-dropzone';
 import { Link } from 'react-router-dom';
+import Single from './Single.jsx';
 
 export default class UserProfile extends Component {
     constructor(props){
@@ -9,6 +10,8 @@ export default class UserProfile extends Component {
         this.state={
             files: []
         }
+
+        this.getUser = this.getUser.bind(this);
 
     }
 
@@ -21,7 +24,15 @@ export default class UserProfile extends Component {
     }
 
     componentWillMount() {
-        fetch(`/user/1`)
+        this.getUser();
+    }
+
+    componentDidMount() {
+        this.getUser();
+    }
+
+      getUser() {
+    fetch(`/user/1`)
             .then((response) => response.json())
             .then((user) => {
                 this.setState({
@@ -29,7 +40,7 @@ export default class UserProfile extends Component {
                 })
         })
         .catch((err) => console.log(err))
-    }
+  }
 
     render(){
 
@@ -54,7 +65,8 @@ export default class UserProfile extends Component {
                             state: {
                                 image: elem.image,
                                 description: elem.description,
-                                space_id: elem.space_id
+                                space_id: elem.space_id,
+
                             }
 
                             }}>
@@ -73,7 +85,6 @@ export default class UserProfile extends Component {
                         <Link to={`/user/1/api`}><li><i className="fas fa-search"></i><i className="fas fa-search"></i></li></Link>
                     </ul>
                 </header>
-
                 <div className="profile">
                     <ul>
                         <li>

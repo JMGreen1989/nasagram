@@ -12,7 +12,7 @@ export default class UserAPI extends Component {
 
         this.save = this.save.bind(this);
         // this.pictureData =this.pictureData.bind(this);
-        // this.changeColor = this.changeColor.bind(this);
+        this.changeColor = this.changeColor.bind(this);
     }
 
     componentWillMount(){
@@ -22,12 +22,12 @@ export default class UserAPI extends Component {
           .catch(err => console.log(err))
     }
 
-    // changeColor() {
-    //     debugger;
-    //     this.setState({
-    //         active: true
-    //     })
-    // }
+    changeColor() {
+        // debugger;
+        this.setState({
+            active: true
+        })
+    }
 
     save(i){
         debugger;
@@ -44,11 +44,12 @@ export default class UserAPI extends Component {
                 'description': this.state.api[i].camera.full_name
             })
         })
-        .then(() => console.log(this.state.api[i]));
+        .then(() => console.log(this.state.api[i]))
+        .then(() => this.changeColor());
     }
 
     render(){
-
+        const active = this.state.active;
 
         if(this.state.api) {
             const crop = this.state.api.slice();
@@ -62,7 +63,7 @@ export default class UserAPI extends Component {
                         <img src={item.img_src}/>
                         <div
                         onClick={() => this.save(i)}>
-                            <i  className="fas fa-heart"></i>
+                            <i  style={active ? {color: 'red'} : {color: 'grey'}} className="fas fa-heart"></i>
                         </div>
                         <h3><b>{item.camera.name}</b> {item.camera.full_name}</h3>
                     </div>
