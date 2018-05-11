@@ -22,13 +22,14 @@ export default class UserAPI extends Component {
     }
 
     changeColor() {
+        debugger;
         this.setState({
             active: true
         })
     }
 
     save(i){
-        debugger;
+        // debugger;
         // e.preventDefault();
         console.log(`im saved to the database: ${i}`)
         // this is all we want saved into the db:

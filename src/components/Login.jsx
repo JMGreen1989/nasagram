@@ -1,5 +1,6 @@
 import React from 'react'
 import './login.css';
+import jwt from 'jwt-js';
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -8,13 +9,14 @@ export default class Login extends React.Component {
             currentUser: null
         };
 
-        this.checkToken = this.checkToken.bind(this)
+        this.checkToken = this.checkToken.bind(this);
+        // this.handleLogin = this.handleLogin.bind(this);
     }
 
     checkToken() {
         debugger;
         const authToken = localStorage.getItem('authToken');
-        fetch('/user', {
+        fetch('/register', {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',

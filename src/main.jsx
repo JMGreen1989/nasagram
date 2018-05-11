@@ -19,7 +19,7 @@ import Register    from './components/Register';
 fontawesome.library.add(brands, solid);
 
 ReactDOM.render(
-    <BrowserRouter><UserAPI /></BrowserRouter>
+    <BrowserRouter><Register /></BrowserRouter>
 , document.querySelector('#container'));
 // <BrowserRouter>
 //         <Switch>
