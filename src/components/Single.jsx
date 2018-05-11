@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './single.css';
+// import {reset} from 'redux-form';
 // import { Link } from 'react-router-dom'
 // import InlineEdit from 'react-edit-inline';
 
@@ -12,10 +13,11 @@ export default class Single extends Component {
      this.edit = this.edit.bind(this);
      this.destroy = this.destroy.bind(this);
      this.space = this.space.bind(this);
+     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   space() {
-    fetch(`/space/6`)
+    fetch(`/space/9`)
             .then((response) => response.json())
             .then((post) => {
                 this.setState({
@@ -56,6 +58,10 @@ export default class Single extends Component {
         .then(() => this.space());
     }
 
+    handleSubmit(e){
+      this.refs.editMe.value = '';
+    }
+
     destroy() {
       fetch(`/space/${this.state.post.space_id}`, {
             method: 'DELETE'
@@ -90,9 +96,10 @@ export default class Single extends Component {
                         <i className="fa fa-globe" aria-hidden="true"></i>
                         <h1>{user}</h1>
                         <h2>{description}</h2>
-                        <input name="description" placeholder="edit me"
-                        onChange={this.edit}/>
-                        <div onClick={this.edit}><i className="fas fa-pencil-alt"></i></div>
+                        <input name="description" placeholder="Edit me!"
+                        onChange={this.edit}
+                        ref="editMe" />
+                        <div onClick={this.handleSubmit}><i className="fas fa-pencil-alt"></i></div>
                         <br/>
                        <div onClick={this.destroy}><i className="fas fa-times"></i></div>
                   </div>
