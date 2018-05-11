@@ -6,44 +6,30 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            currentUser: null
+            username: '',
+            password: ''
         };
 
-        this.checkToken = this.checkToken.bind(this);
-        // this.handleLogin = this.handleLogin.bind(this);
+
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handSubmit = this.handSubmit.bind(this);
     }
 
-    checkToken() {
-        debugger;
-        const authToken = localStorage.getItem('authToken');
-        fetch('/register', {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json',
-                'Authorization': `Bearer ${authToken}`
-            }
-        })
-        .then(resp => {
-            if (!resp.ok) throw new Error(resp.message);
-                return resp.json()
-        })
-        .then(respBody => {
-            this.setState({
-                currentUser: respBody.user
-            })
-        })
-        .catch(err => {
-            console.log('not logged in');
-            localStorage.removeItem('authToken');
-            this.setState({
-                currentUser: null
-            });
-        })
-    }
+    handleInputChange(e) {
+    const { username, value } = e.target;
+    this.setState({
+      [username]: value
+    });
+  }
 
-    // componentDidMount() {
-    //     this.checkToken();
-    // }
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.onLogin(this.state);
+    this.setState({
+      username: '',
+      password: ''
+    });
+  }
 
     render(){
       return(
@@ -51,12 +37,14 @@ export default class Login extends React.Component {
               <div className="container">
                   <h1 className="new">Nasagram</h1>
                   <p>Login to see your personal feed of images from Nasa</p>
-                  <form onSubmit={this.checkToken}>
+                  <form onSubmit={this.handSubmit}>
                       <input name="username" type="text" placeholder="Username"
-                      ref={(ref) => {this.username = ref}} />
+                      onChange={this.handleInputChange}
+                      value={this.state.username} />
                       <br/>
-                      <input name="password" type="text" placeholder="Password"
-                      ref={(ref) => {this.password = ref}}/>
+                      <input name="password" type="password" placeholder="Password"
+                      onChange={this.handleInputChange}
+                      value={this.state.password}/>
                       <br/>
                       <button type="submit">Sign in</button>
                   </form>

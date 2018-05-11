@@ -11,8 +11,38 @@ import Register    from './Register';
 export default class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {};
+
+    this.checkToken = this.checkToken.bind(this);
   }
+
+  checkToken() {
+        debugger;
+        const authToken = localStorage.getItem('authToken');
+        fetch('/register', {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${authToken}`
+            }
+        })
+        .then(resp => {
+            if (!resp.ok) throw new Error(resp.message);
+                return resp.json()
+        })
+        .then(respBody => {
+            this.setState({
+                currentUser: respBody.user
+            })
+        })
+        .catch(err => {
+            console.log('not logged in');
+            localStorage.removeItem('authToken');
+            this.setState({
+                currentUser: null
+            });
+        })
+    }
 
   render(){
       return (

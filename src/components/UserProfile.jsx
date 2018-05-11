@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './userProfile.css';
-import Dropzone from 'react-dropzone'
+import Dropzone from 'react-dropzone';
+import { Link } from 'react-router-dom';
 
 export default class UserProfile extends Component {
     constructor(props){
@@ -41,13 +42,23 @@ export default class UserProfile extends Component {
         }
 
         if(this.state.user){
+            var name = this.state.user[0].username
            console.log(this.state.user)
            var post = this.state.user.map((elem, i) => (
                <div key={i} className="container">
                    <img className="image" src={elem.image}/>
                    <div className="description">
                        {elem.description}
-                       <Link to={`/user/1/${i}`}><i className="fas fa-eye"></i></Link>
+                       <Link to={{
+                            pathname: `/space/${elem.space_id}`,
+                            state: {
+                                image: elem.image,
+                                description: elem.description,
+                                space_id: elem.space_id
+                            }
+
+                            }}>
+                            <i className="fas fa-eye"></i></Link>
                    </div>
                </div>
            ))
@@ -59,7 +70,7 @@ export default class UserProfile extends Component {
                     <ul>
                         <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                         <li className='logo'>Nasagram</li>
-                        <li><i className="fas fa-user"></i><i className="fas fa-search"></i></li>
+                        <Link to={`/user/1/api`}><li><i className="fas fa-search"></i><i className="fas fa-search"></i></li></Link>
                     </ul>
                 </header>
 
@@ -69,8 +80,8 @@ export default class UserProfile extends Component {
                             <i className="fa fa-globe" aria-hidden="true"></i>
                         </li>
                         <li className='username'>
-                            <h1>Username</h1>
-                            <h2>Saved articles from Nasa's Database</h2>
+                            <h1>{name}</h1>
+                            <h2>Your saved articles from Nasa's Database</h2>
                         </li>
                         <li>
                             <span className='dropzone'>
@@ -84,6 +95,7 @@ export default class UserProfile extends Component {
 
                 <div className="saved">
                     {post}
+                     <h2>Scroll up<i className="fas fa-arrow-up"></i></h2>
                 </div>
 
                 <h5>Thank you for visiting Nasagram ®<br/>Important notice we would like to give design credit to Instagram ®</h5>

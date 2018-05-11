@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './userAPI.css';
+import { Link } from 'react-router-dom'
 
 export default class UserAPI extends Component {
     constructor(props){
@@ -11,7 +12,7 @@ export default class UserAPI extends Component {
 
         this.save = this.save.bind(this);
         // this.pictureData =this.pictureData.bind(this);
-        this.changeColor = this.changeColor.bind(this);
+        // this.changeColor = this.changeColor.bind(this);
     }
 
     componentWillMount(){
@@ -21,15 +22,15 @@ export default class UserAPI extends Component {
           .catch(err => console.log(err))
     }
 
-    changeColor() {
-        debugger;
-        this.setState({
-            active: true
-        })
-    }
+    // changeColor() {
+    //     debugger;
+    //     this.setState({
+    //         active: true
+    //     })
+    // }
 
     save(i){
-        // debugger;
+        debugger;
         // e.preventDefault();
         console.log(`im saved to the database: ${i}`)
         // this is all we want saved into the db:
@@ -48,16 +49,6 @@ export default class UserAPI extends Component {
 
     render(){
 
-  //       var styles = {
-  //   heart: {
-  //   on: {
-  //       backgroudColor: 'red'
-  //   },
-  //   off: {
-  //       backgroundColor: 'black'
-  //   }
-  // }
-  // }
 
         if(this.state.api) {
             const crop = this.state.api.splice(0,10);
@@ -71,8 +62,7 @@ export default class UserAPI extends Component {
                         <img src={item.img_src}/>
                         <div
                         onClick={() => this.save(i)}>
-                            <i onClick={this.changeColor} className="fas fa-heart"
-                           style={this.state.active ? {color: 'red'} : {color: 'grey'}}></i>
+                            <i  className="fas fa-heart"></i>
                         </div>
                         <h3><b>{item.camera.name}</b> {item.camera.full_name}</h3>
                     </div>
@@ -81,13 +71,15 @@ export default class UserAPI extends Component {
         }
 
         return (
-            <div className='body'>
+             <div className='body'>
 
                 <header>
                     <ul>
                         <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                         <li className='logo'>Nasagram</li>
-                        <li><i className="fas fa-user"></i></li>
+                        <li className="heart">
+                            <Link to={`/user/1`}><i className="fas fa-heart"></i></Link>
+                        </li>
                     </ul>
                 </header>
 
@@ -96,6 +88,7 @@ export default class UserAPI extends Component {
                 </section>
 
             </div>
+
         )
     }
 }
