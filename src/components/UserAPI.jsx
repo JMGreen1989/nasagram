@@ -4,10 +4,14 @@ import './userAPI.css';
 export default class UserAPI extends Component {
     constructor(props){
         super(props)
-        this.state={}
+        this.state={
+            active: false
+            // heart: 'grey'
+        }
 
         this.save = this.save.bind(this);
         // this.pictureData =this.pictureData.bind(this);
+        this.changeColor = this.changeColor.bind(this);
     }
 
     componentWillMount(){
@@ -17,7 +21,11 @@ export default class UserAPI extends Component {
           .catch(err => console.log(err))
     }
 
-
+    changeColor() {
+        this.setState({
+            active: true
+        })
+    }
 
     save(i){
         debugger;
@@ -34,11 +42,21 @@ export default class UserAPI extends Component {
                 'description': this.state.api[i].camera.full_name
             })
         })
-        .then(() => console.log(i));
+        .then(() => console.log(this.state.api[i]));
     }
 
-
     render(){
+
+  //       var styles = {
+  //   heart: {
+  //   on: {
+  //       backgroudColor: 'red'
+  //   },
+  //   off: {
+  //       backgroundColor: 'black'
+  //   }
+  // }
+  // }
 
         if(this.state.api) {
             const crop = this.state.api.splice(0,10);
@@ -50,8 +68,10 @@ export default class UserAPI extends Component {
                             <h2>Nasa's API</h2>
                             <h4>leveraging open data</h4>
                         <img src={item.img_src}/>
-                        <div onClick={() => this.save(i)}>
-                            <i className="fas fa-heart"></i>
+                        <div
+                        onClick={() => this.save(i)}>
+                            <i onClick={this.changeColor} className="fas fa-heart"
+                           style={this.state.active ? {color: 'red'} : {color: 'grey'}}></i>
                         </div>
                         <h3><b>{item.camera.name}</b> {item.camera.full_name}</h3>
                     </div>

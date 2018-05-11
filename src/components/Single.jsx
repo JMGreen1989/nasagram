@@ -42,7 +42,7 @@ export default class Single extends Component {
 
         edit(e) {
           // debugger;
-          e.persist()
+          // e.persist()
           e.preventDefault();
         fetch(`/space/${this.state.post.space_id}`, {
             method: 'PUT',
