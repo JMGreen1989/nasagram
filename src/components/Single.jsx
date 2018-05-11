@@ -15,7 +15,7 @@ export default class Single extends Component {
   }
 
   space() {
-    fetch(`/space/3`)
+    fetch(`/space/1`)
     // fetch(`/space/${this.props.space_id}`)
             .then((response) => response.json())
             .then((post) => {
