@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './public.css';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import ReactLoading from 'react-loading';
+import { Section, Title, Article, Prop, list } from "./Loader";
+
 
 export default class Public extends Component {
     constructor(props){
@@ -30,6 +33,7 @@ export default class Public extends Component {
     render(){
       const isLoading = this.state.isLoading;
       console.log('isLoading:', isLoading)
+      console.log('this is props:', this.props)
         if(this.state.api) {
             const crop = this.state.api.splice(0,10);
             var item = crop.map((item, i) => {
@@ -59,8 +63,14 @@ export default class Public extends Component {
                    </ul>
                </header>
 
-               <section>
-                    <h1>Loading...</h1>
+               <section style={{display: 'flex', justifyContent: 'center'}}>
+               <Section>
+                    <Title>Loading...</Title>
+                    <Article>
+                    <ReactLoading type={list[6].prop} />
+                     </Article>
+                    </Section>
+
                </section>
 
            </div>

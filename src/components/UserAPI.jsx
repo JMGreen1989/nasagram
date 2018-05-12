@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './userAPI.css';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import ReactLoading from 'react-loading';
+import { Section, Title, Article, Prop, list } from "./Loader";
+
 
 export default class UserAPI extends Component {
     constructor(props){
@@ -100,9 +103,15 @@ export default class UserAPI extends Component {
                     </ul>
                 </header>
 
-                <section>
-                    <h1>Loading...</h1>
-                </section>
+                <section style={{display: 'flex', justifyContent: 'center'}}>
+               <Section>
+                    <Title>Loading...</Title>
+                    <Article>
+                    <ReactLoading type={list[6].prop} />
+                     </Article>
+                    </Section>
+
+               </section>
 
             </div>
             )
