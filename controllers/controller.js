@@ -123,10 +123,10 @@ module.exports = {
     },
 
     login(req, res, next) {
-        console.log('im in the controller in login')
+        // console.log('im in the controller in login')
         db.login(req.body)
-        console.log(req.body, ' this is the req.body')
-            .then(data => tokenService.makeToken({
+        console.log('im in the controller. req.body:', req.body)
+            .then(data => tokenService.verify({
                 id: data.id,
                 username: data.username
             }))
