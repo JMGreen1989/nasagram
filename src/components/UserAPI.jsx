@@ -6,32 +6,47 @@ export default class UserAPI extends Component {
     constructor(props){
         super(props)
         this.state={
-            active: false
-            // heart: 'grey'
+            api: null,
+            active: false,
+            isLoading: true
         }
 
         this.save = this.save.bind(this);
         // this.pictureData =this.pictureData.bind(this);
         this.changeColor = this.changeColor.bind(this);
+        this.getSpace = this.getSpace.bind(this);
     }
 
-    componentWillMount(){
+    getSpace() {
         fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=k5NtPxObjn5al0hbRRl2cnx1KVQot2JOJxY0NqJH`)
           .then(data => data.json())
           .then(json => this.setState({api: json.photos}))
           .catch(err => console.log(err))
     }
 
-    changeColor() {
+    // componentWillMount(){
+    //     this.getSpace();
+    // }
+
+    componentDidMount() {
+        this.getSpace();
+        setTimeout(() => this.setState({isLoading: false}), 15000);
+    }
+
+    changeColor(i) {
         // debugger;
-        this.setState({
-            active: true
+        this.setState((prevState, props) => {
+            return {active: !prevState.active}
         })
+
+        console.log('active:', this.state.active, i);
+        // this.getSpace();
     }
 
     save(i){
         debugger;
         // e.preventDefault();
+        this.changeColor(i);
         console.log(`im saved to the database: ${i}`)
         // this is all we want saved into the db:
         // id.img_src
@@ -45,11 +60,12 @@ export default class UserAPI extends Component {
             })
         })
         .then(() => console.log(this.state.api[i]))
-        .then(() => this.changeColor());
     }
 
     render(){
+        const isLoading = this.state.isLoading;
         const active = this.state.active;
+        console.log('isLoading:', isLoading)
 
         if(this.state.api) {
             const crop = this.state.api.slice();
@@ -63,15 +79,36 @@ export default class UserAPI extends Component {
                         <img src={item.img_src}/>
                         <div
                         onClick={() => this.save(i)}>
-                            <i  style={active ? {color: 'red'} : {color: 'grey'}} className="fas fa-heart"></i>
+                            <i style={active ? {color: 'red'} : {color: 'green'}} className="fas fa-heart"></i>
                         </div>
                         <h3><b>{item.camera.name}</b> {item.camera.full_name}</h3>
                     </div>
                 )
             })
-        }
-
+       }
+       if (isLoading) {
         return (
+            <div className='body'>
+
+                <header>
+                    <ul>
+                        <li><i className="fa fa-camera" aria-hidden="true"></i></li>
+                        <li className='logo'>Nasagram</li>
+                        <li className="heart">
+                            <Link to={`/user/1`}><i className="fas fa-heart"></i></Link>
+                        </li>
+                    </ul>
+                </header>
+
+                <section>
+                    <h1>Loading...</h1>
+                </section>
+
+            </div>
+            )
+       }
+        return (
+
              <div className='body'>
 
                 <header>

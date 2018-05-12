@@ -82,7 +82,7 @@ export default class UserProfile extends Component {
                     <ul>
                         <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                         <li className='logo'>Nasagram</li>
-                        <Link to={`/user/1/api`}><li><i className="fas fa-search"></i><i className="fas fa-search"></i></li></Link>
+                        <Link to={`/user/1/api`}><li><i className="fas fa-search"></i></li></Link>
                     </ul>
                 </header>
                 <div className="profile">
