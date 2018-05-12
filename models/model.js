@@ -53,6 +53,7 @@ module.exports = {
     },
 
     findByUsername(username) {
+      console.log('this is the username:', username)
         return db.one(`
         SELECT * FROM users
         WHERE username = $1
@@ -60,7 +61,8 @@ module.exports = {
     },
 
     login(credentials) {
-        return findByUsername(credentials.username)
+      console.log('im in models this is creds:', credentials)
+        return this.findByUsername(credentials.username)
             .then(user => (
         // compare the provided password with the password digest
         bcrypt.compare(credentials.password, user.password)
