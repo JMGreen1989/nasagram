@@ -27,17 +27,12 @@ export default class UserAPI extends Component {
           .catch(err => console.log(err))
     }
 
-    // componentWillMount(){
-    //     this.getSpace();
-    // }
-
     componentDidMount() {
         this.getSpace();
         setTimeout(() => this.setState({isLoading: false}), 15000);
     }
 
     changeColor(i) {
-        // debugger;
         this.setState((prevState, props) => {
             return {active: !prevState.active}
         })
@@ -47,13 +42,8 @@ export default class UserAPI extends Component {
     }
 
     save(i){
-        debugger;
-        // e.preventDefault();
         this.changeColor(i);
         console.log(`im saved to the database: ${i}`)
-        // this is all we want saved into the db:
-        // id.img_src
-        // id.full_name
         fetch('/user/1', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -75,7 +65,7 @@ export default class UserAPI extends Component {
             console.log(crop)
             var item = crop.map((item, i) => {
                 return (
-                    <div key={i} className='public_api'>
+                    <div key={i} className='api'>
                         <i className="fa fa-globe" aria-hidden="true"></i>
                             <h2>Nasa's API</h2>
                             <h4>leveraging open data</h4>
@@ -91,14 +81,14 @@ export default class UserAPI extends Component {
        }
        if (isLoading) {
         return (
-            <div className='body'>
+            <div className='body user'>
 
                 <header>
                     <ul>
                         <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                         <li className='logo'>Nasagram</li>
                         <li className="heart">
-                            <Link to={`/user/1`}><i className="fas fa-heart"></i></Link>
+                            <Link to={`/user/1`}><i className="fas fa-heart"></i>Profile</Link>
                         </li>
                     </ul>
                 </header>
@@ -118,14 +108,14 @@ export default class UserAPI extends Component {
        }
         return (
 
-             <div className='body'>
+             <div className='body user'>
 
                 <header>
                     <ul>
                         <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                         <li className='logo'>Nasagram</li>
                         <li className="heart">
-                            <Link to={`/user/1`}><i className="fas fa-heart"></i></Link>
+                            <Link to={`/user/1`}><i className="fas fa-heart"></i>Profile</Link>
                         </li>
                     </ul>
                 </header>

@@ -50,15 +50,15 @@ export default class Public extends Component {
         }
         if(isLoading) {
             return(
-            <div className='body'>
+            <div className='body public'>
 
                <header>
                    <ul>
                        <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                        <li className='logo'>Nasagram</li>
                        <li>
-                           <Link to="/user/1/api"><i className="fas fa-user"></i></Link>
-                           <Link to="/register"><i className="fas fa-edit"></i></Link>
+                       <Link to="/user/1/api"><i className="fas fa-user"></i>Login<br/></Link>
+                       <Link to="/register"><i className="fas fa-edit"></i>Register</Link>
                        </li>
                    </ul>
                </header>
@@ -77,15 +77,15 @@ export default class Public extends Component {
            )
         }
         return(
-            <div className='body'>
+            <div className='body public'>
 
                <header>
                    <ul>
                        <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                        <li className='logo'>Nasagram</li>
                        <li>
-                           <Link to="/user/1/api"><i className="fas fa-user"></i></Link>
-                           <Link to="/register"><i className="fas fa-edit"></i></Link>
+                           <Link to="/user/1/api"><i className="fas fa-user"></i>Login<br/></Link>
+                           <Link to="/register"><i className="fas fa-edit"></i>Register</Link>
                        </li>
                    </ul>
                </header>

@@ -25,7 +25,7 @@ export default class Register extends React.Component {
 
     render(){
         return(
-            <div className="body">
+            <div className="body register">
                 <div className="container">
                     <h1 className="new">Nasagram</h1>
                     <p>Sign up to see photos from Nasa</p>

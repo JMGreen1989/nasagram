@@ -21,6 +21,17 @@ export default class UserProfile extends Component {
         this.setState({
           files: formatedFiles
         });
+
+        fetch('/user/1', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                'image': formatedFiles[0],
+                'description': 'add a custom caption here'
+            })
+        })
+        .then((response) => console.log(response))
+        .then(() => this.getUser())
     }
 
     componentWillMount() {
@@ -31,8 +42,8 @@ export default class UserProfile extends Component {
         this.getUser();
     }
 
-      getUser() {
-    fetch(`/user/1`)
+    getUser() {
+        fetch(`/user/1`)
             .then((response) => response.json())
             .then((user) => {
                 this.setState({
@@ -42,15 +53,8 @@ export default class UserProfile extends Component {
         .catch((err) => console.log(err))
   }
 
+
     render(){
-
-        let images = this.state.files.map((photo, i) => (
-            <img key={i} src={photo}/>
-        ))
-
-        if(this.state.files.length > 0){
-            console.log(this.state.files)
-        }
 
         if(this.state.user){
             var name = this.state.user[0].username
@@ -77,7 +81,7 @@ export default class UserProfile extends Component {
        }
 
         return (
-            <div className='body'>
+            <div className='body user_profile'>
                 <header>
                     <ul>
                         <li><i className="fa fa-camera" aria-hidden="true"></i></li>
@@ -106,7 +110,6 @@ export default class UserProfile extends Component {
 
                 <div className="saved">
                     {post}
-                     <h2>Scroll up<i className="fas fa-arrow-up"></i></h2>
                 </div>
 
                 <h5>Thank you for visiting Nasagram ®<br/>Important notice we would like to give design credit to Instagram ®</h5>

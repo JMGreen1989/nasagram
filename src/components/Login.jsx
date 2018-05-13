@@ -81,7 +81,7 @@ export default class Login extends React.Component {
 
     render(){
       return(
-          <div className="body">
+          <div className="body login">
               <div className="container">
                   <h1 className="new">Nasagram</h1>
                   <p>Login to see your personal feed of images from Nasa</p>
