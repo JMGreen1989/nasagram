@@ -62,7 +62,9 @@ function register(creds) {
     headers: {
       'content-type': 'application/json'
     }
-  }).then(checkStatus).then(saveToken)
+  })
+  .then(checkStatus)
+  .then(saveToken)
 }
 
 

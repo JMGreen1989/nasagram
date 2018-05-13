@@ -6568,14 +6568,6 @@ label.panel-block {
     padding-bottom: 7rem;
 }
 
-.user a {
-    color: rgba(0,0,0,.6);
-}
-
-.user a:hover {
-    color: blue;
-}
-
 .user .api {
     height: 600px;
     width: 500px;
@@ -6622,6 +6614,10 @@ label.panel-block {
     font-size: 1.2rem;
     color: rgba(0,0,0,.2);
     margin-right: .5rem;
+}
+
+.user .fa-user:hover {
+    color: blue;
 }
 
 .user .fa-heart {
@@ -6774,17 +6770,19 @@ footer {
 
 .single img {
     height: 100%;
-    margin: 0;
-    width: 600px;
+    margin: auto;
+    width: 703px;
 }
 
 .single .tab {
     position: absolute;
     bottom: 0;
-    width: 600px;
+    left: 0;
+    right: 0;
     padding-top: .5rem;
     z-index: 1000;
     background-color: rgba(255,255,255, .8);
+    margin: auto;
 }
 
 .single .fa-globe {
@@ -6805,6 +6803,18 @@ footer {
 .single .fa-user {
     color: rgba(0,0,0,.2);
     margin-right: .5rem;
+}
+
+.single .fa-user:hover {
+    color: blue;
+}
+
+.single .fa-arrow-left {
+    color: rgba(0,0,0,.5);
+}
+
+.single .fa-arrow-left:hover {
+    color: blue;
 }
 
 .single .fa-times {
@@ -6949,6 +6959,10 @@ footer {
 .user_profile .fa-search {
     margin-left: .5rem;
     color: rgba(0,0,0,.3);
+}
+
+.user_profile .fa-search:hover {
+    color: blue;
 }
 
 .user_profile .fa-eye {

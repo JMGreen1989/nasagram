@@ -135,6 +135,10 @@
     color: rgba(0,0,0,.3);
 }
 
+.user_profile .fa-search:hover {
+    color: blue;
+}
+
 .user_profile .fa-eye {
     margin-left: .5rem;
     color: white;

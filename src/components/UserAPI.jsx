@@ -88,7 +88,7 @@ export default class UserAPI extends Component {
                         <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                         <li className='logo'>Nasagram</li>
                         <li className="heart">
-                            <Link to={`/user/1`}><i className="fas fa-heart"></i>Profile</Link>
+                            <Link to={`/user/1`}><i className="fas fa-user"></i>Profile</Link>
                         </li>
                     </ul>
                 </header>
@@ -115,7 +115,7 @@ export default class UserAPI extends Component {
                         <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                         <li className='logo'>Nasagram</li>
                         <li className="heart">
-                            <Link to={`/user/1`}><i className="fas fa-heart"></i>Profile</Link>
+                            <Link to={`/user/1`}><i className="fas fa-user"></i>Profile</Link>
                         </li>
                     </ul>
                 </header>
