@@ -14,7 +14,7 @@
     padding-top: 1rem;
 }
 
-.container {
+.login .container {
     position: absolute;
     top: 30%;
     left: 0;
@@ -23,28 +23,28 @@
     height: 37vh!important;
 }
 
-h1 {
+.login h1 {
     text-align: center;
     width: 100%;
 }
 
-p {
+.login p {
     text-align: center;
     font-size: .8rem;
     padding-top: .3rem;
     color: rgba(0,0,0,.3);
 }
 
-p:last-of-type {
+.login p:last-of-type {
     padding-bottom: 1rem;
 }
 
-form {
+.login form {
     text-align: center;
     padding: 1rem 0 1rem 0;
 }
 
-input {
+.login input {
     border: none;
     border-bottom: 1px solid rgba(0,0,0,.5);
     padding-bottom: .3rem;
@@ -57,7 +57,7 @@ input {
     color: rgba(0,0,0,.3);
 }
 
-button {
+.login button {
     padding: .5rem .9rem .5rem .9rem;
     margin-top: 1rem;
     background-color: transparent;

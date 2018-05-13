@@ -27,40 +27,86 @@ footer {
     padding: 2rem;
 }
 
-.single {
-    height: 450px;
-    width: 700px;
-    margin: auto;
-    background-color: white;
+.single .container {
+    width: 55%;
+    height: 65vh;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20%;
+    overflow: hidden;
+}
+
+.single .fa-camera {
+    font-size: 1.2rem;
+    color: rgba(0,0,0,.2);
+}
+
+
+.single input {
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.5);
+    padding-bottom: .3rem;
+    width: 250px;
+    margin-bottom: .4rem;
+    margin-left: 6.1rem;
+}
+
+.sinlge a {
+    color: rgba(0,0,0,.6);
+}
+
+.sinlge a:hover {
+    color: blue;
+}
+
+.logo {
+    font-family: 'Oleo Script', cursive;
+    font-size: 2.5rem;
+    line-height: 1rem;
+}
+
+.single img {
+    height: 100%;
+    margin: 0;
+    width: 600px;
+}
+
+.single .tab {
+    position: absolute;
+    bottom: 0;
+    width: 600px;
+    padding-top: .5rem;
+    z-index: 1000;
+    background-color: rgba(255,255,255, .8);
+}
+
+.single .fa-globe {
+    font-size: 4rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-bottom: -2rem;
+}
+
+.single .action {
     display: flex;
-    margin-top: 8rem;
 }
 
-.image {
-    border: 1px solid rgba(0,0,0,.2);
-    width: 70%;
+.single h1 {
+    display: inline;
 }
 
-.tab {
-    border: 1px solid rgba(0,0,0,.2);
-    width: 30%;
-}
-
-.fa-globe {
-    font-size: 8rem;
-}
-
-.fa-user {
+.single .fa-user {
     color: rgba(0,0,0,.2);
     margin-right: .5rem;
 }
 
-.fa-times {
+.single .fa-times {
     margin-left: .5rem;
     color: rgba(0,0,0,.3);
 }
 
-.fa-pencil-alt {
+.single .fa-pencil-alt {
     margin-left: .5rem;
     color: rgba(0,0,0,.3);
 }

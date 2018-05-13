@@ -6425,14 +6425,18 @@ label.panel-block {
     overflow: hidden;
 }
 
-header ul {
+.public header ul {
     display: flex;
     justify-content: space-around;
     margin: 1.5rem;
 
 }
 
-header {
+.public a {
+    color: rgba(0,0,0,.6);
+}
+
+.public header {
     position: fixed;
     top: 0;
     border-bottom: 1px solid rgba(0,0,0,.2);
@@ -6440,7 +6444,7 @@ header {
     background-color: white;
 }
 
-section {
+.public section {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -6471,60 +6475,58 @@ section {
     margin: auto;
 }
 
-h3 {
+.public h3 {
     border-bottom: 1px solid rgba(0,0,0,.2);
     text-align: center;
     padding: 1rem;
     font-size: .8rem;
 }
 
-h2 {
+.public h2 {
     display: inline;
     font-size: 1rem;
 }
 
-h4 {
-    margin-left: 3.5rem;
+.public h4 {
+    margin-left: 3rem;
     padding-bottom: 1rem;
     color: rgba(0,0,0,.4);
     font-size: .7rem;
 }
 
-.fa-globe {
+.public .fa-globe {
     font-size: 2rem;
     margin-right: 1rem;
 }
 
-.fa-user {
-    font-size: 1.2rem;
-    color: rgba(0,0,0,.2);
-    margin-right: .5rem;
-}
-
-.fa-edit {
-    font-size: 1.2rem;
-    color: rgba(0,0,0,.2);
-    margin-right: .5rem;
-}
-
-
-.fa-address-card {
+.public .fa-user {
     font-size: 1.2rem;
     color: rgba(0,0,0,.2);
 }
 
-.logo {
+.public .fa-edit {
+    font-size: 1.2rem;
+    color: rgba(0,0,0,.2);
+}
+
+
+.public .fa-address-card {
+    font-size: 1.2rem;
+    color: rgba(0,0,0,.2);
+}
+
+.public .logo {
     font-family: 'Oleo Script', cursive;
     font-size: 2.5rem;
     line-height: 1rem;
 }
 
-.fa-camera {
+.public .fa-camera {
     font-size: 1.2rem;
     color: rgba(0,0,0,.2);
 }
 
-h5 {
+.public h5 {
     font-size: .8rem;
     text-align: center;
     padding-top: 1rem;
@@ -6537,14 +6539,14 @@ h5 {
     overflow: hidden;
 }
 
-header ul {
+.user header ul {
     display: flex;
     justify-content: space-around;
     margin: 1.5rem;
 
 }
 
-header {
+.user header {
     position: fixed;
     top: 0;
     border-bottom: 1px solid rgba(0,0,0,.2);
@@ -6552,7 +6554,7 @@ header {
     background-color: white;
 }
 
-section {
+.user section {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -6566,7 +6568,15 @@ section {
     padding-bottom: 7rem;
 }
 
-.public_api {
+.user a {
+    color: rgba(0,0,0,.6);
+}
+
+.user a:hover {
+    color: blue;
+}
+
+.user .api {
     height: 600px;
     width: 500px;
     border: 1px solid rgba(0,0,0,.2);
@@ -6576,14 +6586,14 @@ section {
     margin-bottom: 2rem;
 }
 
-.public_api img {
+.user .api img {
     height: 400px;
     width: 100%;
     border: 1px solid rgba(0,0,0,.2);
     margin: auto;
 }
 
-h3 {
+.user h3 {
     border-bottom: 1px solid rgba(0,0,0,.2);
     text-align: center;
     padding: 1rem;
@@ -6591,42 +6601,43 @@ h3 {
     font-size: .8rem;
 }
 
-h2 {
+.user h2 {
     display: inline;
     font-size: 1rem;
 }
 
-h4 {
+.user h4 {
     margin-left: 3rem;
     padding-bottom: 1rem;
     color: rgba(0,0,0,.4);
     font-size: .7rem;
 }
 
-.fa-globe {
+.user .fa-globe {
     font-size: 2rem!important;
     margin-right: 1rem;
 }
 
-.fa-user {
+.user .fa-user {
     font-size: 1.2rem;
     color: rgba(0,0,0,.2);
     margin-right: .5rem;
 }
 
-.fa-heart {
+.user .fa-heart {
     font-size: 1.2rem;
     color: rgba(0,0,0,.2);
     margin-top: .5rem;
+    margin-right: .5rem;
 }
 
-.logo {
+.user .logo {
     font-family: 'Oleo Script', cursive;
     font-size: 2.5rem;
     line-height: 1rem;
 }
 
-.fa-camera {
+.user .fa-camera {
     font-size: 1.2rem;
     color: rgba(0,0,0,.2);
 }
@@ -6644,7 +6655,7 @@ h4 {
     padding-top: 1rem;
 }
 
-.container {
+.login .container {
     position: absolute;
     top: 30%;
     left: 0;
@@ -6653,28 +6664,28 @@ h4 {
     height: 37vh!important;
 }
 
-h1 {
+.login h1 {
     text-align: center;
     width: 100%;
 }
 
-p {
+.login p {
     text-align: center;
     font-size: .8rem;
     padding-top: .3rem;
     color: rgba(0,0,0,.3);
 }
 
-p:last-of-type {
+.login p:last-of-type {
     padding-bottom: 1rem;
 }
 
-form {
+.login form {
     text-align: center;
     padding: 1rem 0 1rem 0;
 }
 
-input {
+.login input {
     border: none;
     border-bottom: 1px solid rgba(0,0,0,.5);
     padding-bottom: .3rem;
@@ -6687,7 +6698,7 @@ input {
     color: rgba(0,0,0,.3);
 }
 
-button {
+.login button {
     padding: .5rem .9rem .5rem .9rem;
     margin-top: 1rem;
     background-color: transparent;
@@ -6722,40 +6733,86 @@ footer {
     padding: 2rem;
 }
 
-.single {
-    height: 450px;
-    width: 700px;
-    margin: auto;
-    background-color: white;
+.single .container {
+    width: 55%;
+    height: 65vh;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20%;
+    overflow: hidden;
+}
+
+.single .fa-camera {
+    font-size: 1.2rem;
+    color: rgba(0,0,0,.2);
+}
+
+
+.single input {
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.5);
+    padding-bottom: .3rem;
+    width: 250px;
+    margin-bottom: .4rem;
+    margin-left: 6.1rem;
+}
+
+.sinlge a {
+    color: rgba(0,0,0,.6);
+}
+
+.sinlge a:hover {
+    color: blue;
+}
+
+.logo {
+    font-family: 'Oleo Script', cursive;
+    font-size: 2.5rem;
+    line-height: 1rem;
+}
+
+.single img {
+    height: 100%;
+    margin: 0;
+    width: 600px;
+}
+
+.single .tab {
+    position: absolute;
+    bottom: 0;
+    width: 600px;
+    padding-top: .5rem;
+    z-index: 1000;
+    background-color: rgba(255,255,255, .8);
+}
+
+.single .fa-globe {
+    font-size: 4rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-bottom: -2rem;
+}
+
+.single .action {
     display: flex;
-    margin-top: 8rem;
 }
 
-.image {
-    border: 1px solid rgba(0,0,0,.2);
-    width: 70%;
+.single h1 {
+    display: inline;
 }
 
-.tab {
-    border: 1px solid rgba(0,0,0,.2);
-    width: 30%;
-}
-
-.fa-globe {
-    font-size: 8rem;
-}
-
-.fa-user {
+.single .fa-user {
     color: rgba(0,0,0,.2);
     margin-right: .5rem;
 }
 
-.fa-times {
+.single .fa-times {
     margin-left: .5rem;
     color: rgba(0,0,0,.3);
 }
 
-.fa-pencil-alt {
+.single .fa-pencil-alt {
     margin-left: .5rem;
     color: rgba(0,0,0,.3);
 }
@@ -6766,13 +6823,13 @@ footer {
     overflow: hidden;
 }
 
-header ul {
+.user_profile header ul {
     display: flex;
     justify-content: space-around;
     margin: 1.5rem;
 }
 
-header {
+.user_profile header {
     position: fixed;
     top: 0;
     border-bottom: 1px solid rgba(0,0,0,.2);
@@ -6781,29 +6838,23 @@ header {
 }
 
 
-.fa-globe {
+.user_profile .fa-globe {
     font-size: 8rem;
 }
 
-.fa-user {
-    font-size: 1.2rem;
-    color: rgba(0,0,0,.2);
-    margin-right: .5rem;
-}
-
-.fa-heart {
+.user_profile .fa-heart {
     font-size: 1.2rem;
     color: rgba(0,0,0,.2);
     margin-top: .5rem;
 }
 
-.logo {
+.user_profile .logo {
     font-family: 'Oleo Script', cursive;
     font-size: 2.5rem;
     line-height: 1rem;
 }
 
-.fa-camera {
+.user_profile .fa-camera {
     font-size: 1.2rem;
     color: rgba(0,0,0,.2);
 }
@@ -6830,7 +6881,7 @@ header {
     font-size: .8rem;
 }
 
-h5 {
+.user_profile h5 {
     font-size: .8rem;
     text-align: center;
     padding: 1rem;
@@ -6840,16 +6891,18 @@ h5 {
     width: 100%
 }
 
-.username {
-    padding-right: 2rem;
+.user_profile .username {
+    padding: 2rem;
 }
 
-.username h1 {
+.user_profile .username h1 {
     font-family: 'Oleo Script', cursive;
     font-size: 4rem;
+    line-height: 3rem;
+    text-align: left;
 }
 
-.saved {
+.user_profile .saved {
     width: 60%;
     height: 55vh;
     overflow: scroll;
@@ -6861,35 +6914,46 @@ h5 {
     display: flex;
     flex-wrap: wrap;
     padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
-.image {
+.user_profile .image {
     height: 100%;
     width: 100%;
 }
 
-.container {
+.user_profile .saved .container {
     height: 200px;
-    width: 200px;
+    width: 47%;
+    top: 0%;
     background-color: white;
     margin: auto;
-    margin-bottom: 2rem;
+    margin: .5rem;
     position: relative!important;
 }
 
-.description {
+.user_profile .description {
     position: absolute;
     bottom: 0;
+    color: white;
 }
 
-.fa-search {
+.user_profile a {
+    color: rgba(0,0,0,.6);
+}
+
+.user_profile a:hover {
+    color: blue;
+}
+
+.user_profile .fa-search {
     margin-left: .5rem;
     color: rgba(0,0,0,.3);
 }
 
-.fa-eye {
+.user_profile .fa-eye {
     margin-left: .5rem;
-    color: rgba(0,0,0,.3);
+    color: white;
     position: absolute;
 }
 .body {
@@ -6906,7 +6970,7 @@ h5 {
     padding-top: 1rem;
 }
 
-.container {
+.register .container {
     position: absolute;
     top: 30%;
     left: 0;
@@ -6915,23 +6979,23 @@ h5 {
     height: 35vh;
 }
 
-h1 {
+.register h1 {
     text-align: center;
     width: 100%;
 }
 
-p {
+.register p {
     text-align: center;
     font-size: .8rem;
     color: rgba(0,0,0,.3);
 }
 
-form {
+.register form {
     text-align: center;
     padding: 1rem 0 1rem 0;
 }
 
-input {
+.register input {
     border: none;
     border-bottom: 1px solid rgba(0,0,0,.5);
     padding-bottom: .3rem;
@@ -6944,7 +7008,7 @@ input {
     color: rgba(0,0,0,.3);
 }
 
-button {
+.register button {
     padding: .5rem .9rem .5rem .9rem;
     margin-top: 1rem;
     background-color: transparent;

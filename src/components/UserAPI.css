@@ -7,14 +7,14 @@
     overflow: hidden;
 }
 
-header ul {
+.user header ul {
     display: flex;
     justify-content: space-around;
     margin: 1.5rem;
 
 }
 
-header {
+.user header {
     position: fixed;
     top: 0;
     border-bottom: 1px solid rgba(0,0,0,.2);
@@ -22,7 +22,7 @@ header {
     background-color: white;
 }
 
-section {
+.user section {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -36,7 +36,15 @@ section {
     padding-bottom: 7rem;
 }
 
-.public_api {
+.user a {
+    color: rgba(0,0,0,.6);
+}
+
+.user a:hover {
+    color: blue;
+}
+
+.user .api {
     height: 600px;
     width: 500px;
     border: 1px solid rgba(0,0,0,.2);
@@ -46,14 +54,14 @@ section {
     margin-bottom: 2rem;
 }
 
-.public_api img {
+.user .api img {
     height: 400px;
     width: 100%;
     border: 1px solid rgba(0,0,0,.2);
     margin: auto;
 }
 
-h3 {
+.user h3 {
     border-bottom: 1px solid rgba(0,0,0,.2);
     text-align: center;
     padding: 1rem;
@@ -61,42 +69,43 @@ h3 {
     font-size: .8rem;
 }
 
-h2 {
+.user h2 {
     display: inline;
     font-size: 1rem;
 }
 
-h4 {
+.user h4 {
     margin-left: 3rem;
     padding-bottom: 1rem;
     color: rgba(0,0,0,.4);
     font-size: .7rem;
 }
 
-.fa-globe {
+.user .fa-globe {
     font-size: 2rem!important;
     margin-right: 1rem;
 }
 
-.fa-user {
+.user .fa-user {
     font-size: 1.2rem;
     color: rgba(0,0,0,.2);
     margin-right: .5rem;
 }
 
-.fa-heart {
+.user .fa-heart {
     font-size: 1.2rem;
     color: rgba(0,0,0,.2);
     margin-top: .5rem;
+    margin-right: .5rem;
 }
 
-.logo {
+.user .logo {
     font-family: 'Oleo Script', cursive;
     font-size: 2.5rem;
     line-height: 1rem;
 }
 
-.fa-camera {
+.user .fa-camera {
     font-size: 1.2rem;
     color: rgba(0,0,0,.2);
 }
