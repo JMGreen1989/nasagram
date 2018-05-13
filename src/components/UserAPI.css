@@ -105,3 +105,9 @@
     font-size: 1.2rem;
     color: rgba(0,0,0,.2);
 }
+
+@media only screen and (max-width: 550px) {
+    .user .api {
+        width: 350px;
+    }
+}

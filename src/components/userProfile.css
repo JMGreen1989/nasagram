@@ -144,3 +144,35 @@
     color: white;
     position: absolute;
 }
+
+@media only screen and (max-width: 900px) {
+    .user_profile .saved .container {
+        width: 100%;
+    }
+
+    .user_profile .fa-globe {
+        font-size: 5rem;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .dropzone div {
+        display: none!important;
+    }
+
+    .user_profile .username h1 {
+        font-size: 3rem;
+    }
+
+    .user_profile .username h2 {
+        font-size: .8rem;
+    }
+
+    .user_profile .fa-globe {
+        font-size: 4rem;
+    }
+
+    .user_profile .username {
+        padding: 1rem;
+    }
+}

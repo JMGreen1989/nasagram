@@ -124,3 +124,23 @@ footer {
     margin-left: .5rem;
     color: rgba(0,0,0,.3);
 }
+
+@media only screen and (max-width: 650px) {
+    .dropzone div {
+        display: none;
+    }
+
+    .single .fa-globe {
+        display: none;
+    }
+
+    .single h1 {
+        padding-left: 1rem;
+        margin-bottom: -1rem;
+    }
+
+    .single input {
+        padding-left: 1rem;
+        margin-bottom: 1rem;
+    }
+}

@@ -114,3 +114,9 @@
     padding-top: 1rem;
     color: rgba(0,0,0,.3);
 }
+
+@media only screen and (max-width: 550px) {
+    .public_api {
+        width: 350px;
+    }
+}
