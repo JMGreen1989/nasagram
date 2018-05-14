@@ -53,7 +53,7 @@ export default class Public extends Component {
                        <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                        <li className='logo'>Nasagram</li>
                        <li>
-                       <Link to="/user"><i className="fas fa-user"></i>Login<br/></Link>
+                       <Link to="/login"><i className="fas fa-user"></i>Login<br/></Link>
                        <Link to="/register"><i className="fas fa-edit"></i>Register</Link>
                        </li>
                    </ul>
@@ -80,7 +80,7 @@ export default class Public extends Component {
                        <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                        <li className='logo'>Nasagram</li>
                        <li>
-                           <Link to="/auth"><i className="fas fa-user"></i>Login<br/></Link>
+                           <Link to="/login"><i className="fas fa-user"></i>Login<br/></Link>
                            <Link to="/register"><i className="fas fa-edit"></i>Register</Link>
                        </li>
                    </ul>

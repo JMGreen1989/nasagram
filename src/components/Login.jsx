@@ -12,7 +12,7 @@ export default class Login extends React.Component {
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handSubmit = this.handSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleInputChange(e) {
@@ -22,7 +22,7 @@ export default class Login extends React.Component {
         });
     }
 
-    handSubmit(e) {
+    handleSubmit(e) {
         e.preventDefault();
         fetch('/auth', {
             method: 'POST',
@@ -32,9 +32,14 @@ export default class Login extends React.Component {
                 'password': this.password.value
             })
         })
+
         .then((response) => response.json())
-        .then(({data: {token}}) => console.log(token, ' im the response from than handle submit'))
-        .catch(err => {console.log('fetch in handleSubmit failed, see login.js')})
+        // .then(() => console.log(response, ' im the response'))
+        // .then(({data: {token}}) => console.log(token, ' im the response from than handle submit'))
+        .then(() => {
+            this.props.history.push(`/feed`)
+        })
+        .catch(err => {console.log(err)})
     }
 
     render(){
@@ -43,7 +48,7 @@ export default class Login extends React.Component {
               <div className="container">
                   <h1 className="new">Nasagram</h1>
                   <p>Login to see your personal feed of images from Nasa</p>
-                  <form onSubmit={this.handSubmit}>
+                  <form onSubmit={this.handleSubmit}>
                       <input name="username" type="text" placeholder="Username"
                       ref={(ref) => {this.username = ref}} />
                       <br/>

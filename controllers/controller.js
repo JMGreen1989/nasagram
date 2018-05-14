@@ -6,6 +6,7 @@ const saltRounds   = 10;
 
 module.exports = {
     createReference(req, res, next) {
+        console.log('im the user: ', req.user)
         db.createRef(req.user.user_id, res.locals.space_id)
           .then(data => {
             res.locals.refTable = data;
@@ -38,7 +39,6 @@ module.exports = {
       req.body.hasword = await bcrypt.hash(req.body.password, 5)
       dbUsers.handleAddUser(req.body)
       .then(data => {
-        console.log(data, ' this is from the add user models')
         next();
       })
       .catch(err => {
@@ -51,7 +51,6 @@ module.exports = {
             .then(data => {
                 res.locals.single = data;
                 next();
-                console.log('this is data in getImage', data)
             })
             .catch(err => {
                 next(err);
@@ -73,7 +72,6 @@ module.exports = {
       req.body.space_id = req.params.space_id
         db.update(req.body)
         .then(data => {
-          console.log('this is req.body.space_id', req.body.space_id)
             res.locals.newItem = data
             next();
 

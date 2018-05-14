@@ -40,7 +40,7 @@ export default class UserAPI extends Component {
         })
 
         console.log(`im saved to the database: ${i}`)
-        fetch('/user/1', {
+        fetch('/api/faves', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -84,7 +84,7 @@ export default class UserAPI extends Component {
                         <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                         <li className='logo'>Nasagram</li>
                         <li className="heart">
-                            <Link to={`/user/1`}><i className="fas fa-user"></i>Profile</Link>
+                            <Link to={`/myFaves`}><i className="fas fa-user"></i>Profile</Link>
                         </li>
                     </ul>
                 </header>
@@ -111,7 +111,7 @@ export default class UserAPI extends Component {
                         <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                         <li className='logo'>Nasagram</li>
                         <li className="heart">
-                            <Link to={`/user/1`}><i className="fas fa-user"></i>Profile</Link>
+                            <Link to={`/myFaves`}><i className="fas fa-user"></i>Profile</Link>
                         </li>
                     </ul>
                 </header>
