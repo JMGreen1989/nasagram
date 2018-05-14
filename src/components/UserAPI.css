@@ -95,6 +95,10 @@
     margin-right: .5rem;
 }
 
+/* .user .fa-heart:active {
+    color: red!important;
+} */
+
 .user .logo {
     font-family: 'Oleo Script', cursive;
     font-size: 2.5rem;

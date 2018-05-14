@@ -15,8 +15,6 @@ export default class UserAPI extends Component {
         }
 
         this.save = this.save.bind(this);
-        // this.pictureData =this.pictureData.bind(this);
-        this.changeColor = this.changeColor.bind(this);
         this.getSpace = this.getSpace.bind(this);
     }
 
@@ -32,17 +30,15 @@ export default class UserAPI extends Component {
         setTimeout(() => this.setState({isLoading: false}), 15000);
     }
 
-    changeColor(i) {
-        this.setState((prevState, props) => {
-            return {active: !prevState.active}
+    save(i){
+        var links = document.querySelectorAll('.fa-heart')
+        console.log('im the link', links)
+        links.forEach((element) => {
+            element.addEventListener('click', () => {
+                element.style.color = 'red';
+            })
         })
 
-        console.log('active:', this.state.active, i);
-        // this.getSpace();
-    }
-
-    save(i){
-        this.changeColor(i);
         console.log(`im saved to the database: ${i}`)
         fetch('/user/1', {
             method: 'POST',
@@ -72,7 +68,7 @@ export default class UserAPI extends Component {
                         <img src={item.img_src}/>
                         <div
                         onClick={() => this.save(i)}>
-                            <i style={active ? {color: 'red'} : {color: 'green'}} className="fas fa-heart"></i>
+                            <i className="fas fa-heart"></i>
                         </div>
                         <h3><b>{item.camera.name}</b> {item.camera.full_name}</h3>
                     </div>
