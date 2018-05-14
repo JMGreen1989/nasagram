@@ -2,7 +2,6 @@ import React from 'react';
 import './login.css';
 import jwt from 'jwt-js';
 import jwtDecode from 'jwt-decode';
-import login from '../Service';
 import { Link } from 'react-router-dom';
 
 export default class Login extends React.Component {
