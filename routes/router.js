@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const controller = require('../controllers/controller');
 const resController = require('../controllers/responseController')
+const tokenService = require('../Services/tokenService')
 
 // this displays individual saved images
 router.route('/space/:space_id')
@@ -16,12 +17,16 @@ router.route('/user/:id')
     .get(controller.getCustomFeed, resController.customFeed)
     .post(controller.addImage, controller.createReference, resController.sendRef)
 
-// this is the login page
-router.route('/user')
-    .post(controller.login)
+// check for token
+router.route('/token')
+    .get(controller.receiveToken, controller.isLoggedin)
 
+// this is the login page
+router.route('/auth')
+    .post(controller.authenticate, resController.errNeedToken, resController.sendToken)
+
+// this is the register page
 router.route('/register')
-    // .post(controller.addUser, resController.handleAddingUser);
     .post(controller.register)
 
 // this is the pubic api page

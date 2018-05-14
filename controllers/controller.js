@@ -1,5 +1,8 @@
-const db    = require('../models/model');
+const db           = require('../models/model');
+const dbUsers      = require('../models/userModel');
 const tokenService = require('../Services/tokenService');
+const bcrypt       = require('bcrypt');
+const saltRounds   = 10;
 
 module.exports = {
     createReference(req, res, next) {
@@ -31,11 +34,11 @@ module.exports = {
     },
 
 
-    addUser(req, res, next) {
-      db.handleAddUser(req.body)
+    async addUser(req, res, next) {
+      req.body.hasword = await bcrypt.hash(req.body.password, 5)
+      dbUsers.handleAddUser(req.body)
       .then(data => {
-        res.locals.user = data.user;
-        console.log(res.locals.user)
+        console.log(data, ' this is from the add user models')
         next();
       })
       .catch(err => {
@@ -85,25 +88,21 @@ module.exports = {
     },
 
     // AUTH STUFF
-
-    register(req, res) {
-        console.log('inside register', req.body, res.locals)
-        db.handleAddUser(req.body)
-            .then(data => tokenService.makeToken({
-                user_id: data.user_id,
-                username: data.username
-            }))
-            .then(token => {
-            console.log('this is the token', token)
-                res.json({
-                        token
-                    })
-                })
-            .catch(err => res.status(401).json({
-                message: 'Username taken'
-            }))
+    async register(req, res, next) {
+        req.body.hashword = await bcrypt.hash(req.body.password, 5)
+        console.log(req.body)
+        dbUsers.handleAddUser(req.body)
+            .then((user) => {
+                console.log('username', user)
+                next();
+            })
+            .catch(err => {
+                console.log('theres an err, sorry', err)
+                next(err)
+            })
     },
 
+    // this is setting req.authToken
     receiveToken(req, res, next) {
         if (req.headers.authorization) {
             req.authToken = req.headers.authorization.replace(/^Bearer\s/, '');
@@ -111,34 +110,39 @@ module.exports = {
         next();
     },
 
-    restrict(req, res, next) {
+    // check for that token in recieveToken
+    isLoggedin(req, res, next) {
         tokenService.verify(req.authToken)
-            .then(data => {
-        res.locals.user = data;
+        .then(data => {
+            console.log('ive been verified: ', data)
+            res.send(data)
             next();
         })
         .catch(err => res.status(401).json({
-            status: 'Error',
-            message: 'Invalid credentials'
+            status: 'error',
+            message: 'invalid creds'
         }))
     },
 
-    login(req, res, next) {
-        // console.log('im in the controller in login')
-        db.login(req.body)
-        console.log('this is req.body', req.body)
-            .then(data => tokenService.makeToken({
-                id: data.id,
-                username: data.username
-            }))
-            .then(token => {
-                res.json({
-                    token
-                })
-            })
-            .catch(err => res.status(401).json({
-                status: 'Error',
-                message: 'Invalid credentails'
-            }))
-    },
+
+    // handle logging in
+     async authenticate(req, res, next) {
+           try {
+               const { username, password } = req.body;
+               const user = await dbUsers.findByUsername(username);
+               const valid = bcrypt.compareSync(password, user.password);
+               debugger;
+               if(!valid || !user) {
+                   throw { message : 'wrong password'}
+               }
+
+               delete user.user_id
+               delete user.password
+
+               res.locals.token = tokenService.makeToken({ user });
+               next()
+           } catch (err) {
+               next(err);
+           }
+   },
 }

@@ -15,6 +15,19 @@ module.exports = {
         res.json(res.locals.single)
     },
 
+
+    sendToken(req, res) {
+        res.json({
+            token: res.locals.token
+        })
+    },
+
+    errNeedToken(error, req, res, next) {
+        res.append('WWW-Authenticate', 'JWT')
+        res.sendStatus(401)
+    },
+
+
     handleAddingUser(req, res) {
       res.json({
         status: 'ok',
