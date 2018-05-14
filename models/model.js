@@ -41,16 +41,18 @@ module.exports = {
           username: credentials.username,
           password: hash
         }
+
+        return db.one(`
+                INSERT INTO users (
+                username, password
+                ) VALUES (
+                $/username/, $/password/
+                )
+                 RETURNING user_id, username
+          `, credentials);
       })
       // console.log('hashed', newUser)
-      return db.one(`
-              INSERT INTO users (
-              username, password
-              ) VALUES (
-              $/username/, $/password/
-              )
-               RETURNING user_id, username
-        `, credentials);
+
     },
 
     findByUsername(username) {
