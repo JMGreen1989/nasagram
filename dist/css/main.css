@@ -6532,6 +6532,12 @@ label.panel-block {
     padding-top: 1rem;
     color: rgba(0,0,0,.3);
 }
+
+@media only screen and (max-width: 550px) {
+    .public_api {
+        width: 350px;
+    }
+}
 .body {
     height: 100vh;
     width: 100%;
@@ -6566,14 +6572,6 @@ label.panel-block {
     margin-top: 7rem;
     overflow: scroll;
     padding-bottom: 7rem;
-}
-
-.user a {
-    color: rgba(0,0,0,.6);
-}
-
-.user a:hover {
-    color: blue;
 }
 
 .user .api {
@@ -6624,12 +6622,20 @@ label.panel-block {
     margin-right: .5rem;
 }
 
+.user .fa-user:hover {
+    color: blue;
+}
+
 .user .fa-heart {
     font-size: 1.2rem;
     color: rgba(0,0,0,.2);
     margin-top: .5rem;
     margin-right: .5rem;
 }
+
+/* .user .fa-heart:active {
+    color: red!important;
+} */
 
 .user .logo {
     font-family: 'Oleo Script', cursive;
@@ -6640,6 +6646,12 @@ label.panel-block {
 .user .fa-camera {
     font-size: 1.2rem;
     color: rgba(0,0,0,.2);
+}
+
+@media only screen and (max-width: 550px) {
+    .user .api {
+        width: 350px;
+    }
 }
 .body {
     height: 100vh;
@@ -6774,17 +6786,19 @@ footer {
 
 .single img {
     height: 100%;
-    margin: 0;
-    width: 600px;
+    margin: auto;
+    width: 703px;
 }
 
 .single .tab {
     position: absolute;
     bottom: 0;
-    width: 600px;
+    left: 0;
+    right: 0;
     padding-top: .5rem;
     z-index: 1000;
     background-color: rgba(255,255,255, .8);
+    margin: auto;
 }
 
 .single .fa-globe {
@@ -6807,6 +6821,18 @@ footer {
     margin-right: .5rem;
 }
 
+.single .fa-user:hover {
+    color: blue;
+}
+
+.single .fa-arrow-left {
+    color: rgba(0,0,0,.5);
+}
+
+.single .fa-arrow-left:hover {
+    color: blue;
+}
+
 .single .fa-times {
     margin-left: .5rem;
     color: rgba(0,0,0,.3);
@@ -6815,6 +6841,26 @@ footer {
 .single .fa-pencil-alt {
     margin-left: .5rem;
     color: rgba(0,0,0,.3);
+}
+
+@media only screen and (max-width: 650px) {
+    .dropzone div {
+        display: none;
+    }
+
+    .single .fa-globe {
+        display: none;
+    }
+
+    .single h1 {
+        padding-left: 1rem;
+        margin-bottom: -1rem;
+    }
+
+    .single input {
+        padding-left: 1rem;
+        margin-bottom: 1rem;
+    }
 }
 .body {
     height: 100vh;
@@ -6951,10 +6997,46 @@ footer {
     color: rgba(0,0,0,.3);
 }
 
+.user_profile .fa-search:hover {
+    color: blue;
+}
+
 .user_profile .fa-eye {
     margin-left: .5rem;
     color: white;
     position: absolute;
+}
+
+@media only screen and (max-width: 900px) {
+    .user_profile .saved .container {
+        width: 100%;
+    }
+
+    .user_profile .fa-globe {
+        font-size: 5rem;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .dropzone div {
+        display: none!important;
+    }
+
+    .user_profile .username h1 {
+        font-size: 3rem;
+    }
+
+    .user_profile .username h2 {
+        font-size: .8rem;
+    }
+
+    .user_profile .fa-globe {
+        font-size: 4rem;
+    }
+
+    .user_profile .username {
+        padding: 1rem;
+    }
 }
 .body {
     height: 100vh;

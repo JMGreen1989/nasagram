@@ -36,14 +36,6 @@
     padding-bottom: 7rem;
 }
 
-.user a {
-    color: rgba(0,0,0,.6);
-}
-
-.user a:hover {
-    color: blue;
-}
-
 .user .api {
     height: 600px;
     width: 500px;
@@ -92,12 +84,20 @@
     margin-right: .5rem;
 }
 
+.user .fa-user:hover {
+    color: blue;
+}
+
 .user .fa-heart {
     font-size: 1.2rem;
     color: rgba(0,0,0,.2);
     margin-top: .5rem;
     margin-right: .5rem;
 }
+
+/* .user .fa-heart:active {
+    color: red!important;
+} */
 
 .user .logo {
     font-family: 'Oleo Script', cursive;
@@ -108,4 +108,10 @@
 .user .fa-camera {
     font-size: 1.2rem;
     color: rgba(0,0,0,.2);
+}
+
+@media only screen and (max-width: 550px) {
+    .user .api {
+        width: 350px;
+    }
 }

@@ -36,6 +36,7 @@ module.exports = {
       console.log('this is credentials', credentials)
       bcrypt.hash(credentials.password, saltRounds)
       .then(hash => {
+          console.log(hash, ' im the hash')
         credentials = {
           username: credentials.username,
           password: hash
