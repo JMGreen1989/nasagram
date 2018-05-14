@@ -36,20 +36,23 @@ module.exports = {
       console.log('this is credentials', credentials)
       bcrypt.hash(credentials.password, saltRounds)
       .then(hash => {
+          console.log(hash, ' im the hash')
         credentials = {
           username: credentials.username,
           password: hash
         }
+
+        return db.one(`
+                INSERT INTO users (
+                username, password
+                ) VALUES (
+                $/username/, $/password/
+                )
+                 RETURNING user_id, username
+          `, credentials);
       })
       // console.log('hashed', newUser)
-      return db.one(`
-              INSERT INTO users (
-              username, password
-              ) VALUES (
-              $/username/, $/password/
-              )
-               RETURNING user_id, username
-        `, credentials);
+
     },
 
     findByUsername(username) {
