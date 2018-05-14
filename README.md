@@ -143,6 +143,7 @@ When the application is viewed by a guest, the guest will see a page that states
 -   The top of the page will display log-in/out capabilities
 
 ## Issues and Resolutions
+The API takes a really long time to load all the images, we had to install an npm package called reat-loading to set up a loading animation while the page waits to render completely. This github was very helpful in the process...https://github.com/fakiolinho/react-loading
 
 ERROR:
 RESOLUTION:

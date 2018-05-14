@@ -36,23 +36,27 @@ module.exports = {
       console.log('this is credentials', credentials)
       bcrypt.hash(credentials.password, saltRounds)
       .then(hash => {
+          console.log(hash, ' im the hash')
         credentials = {
           username: credentials.username,
           password: hash
         }
+
+        return db.one(`
+                INSERT INTO users (
+                username, password
+                ) VALUES (
+                $/username/, $/password/
+                )
+                 RETURNING user_id, username
+          `, credentials);
       })
       // console.log('hashed', newUser)
-      return db.one(`
-              INSERT INTO users (
-              username, password
-              ) VALUES (
-              $/username/, $/password/
-              )
-               RETURNING user_id, username
-        `, credentials);
+
     },
 
     findByUsername(username) {
+      console.log('this is the username:', username)
         return db.one(`
         SELECT * FROM users
         WHERE username = $1
@@ -60,7 +64,8 @@ module.exports = {
     },
 
     login(credentials) {
-        return findByUsername(credentials.username)
+      console.log('im in models this is creds:', credentials)
+        return this.findByUsername(credentials.username)
             .then(user => (
         // compare the provided password with the password digest
         bcrypt.compare(credentials.password, user.password)

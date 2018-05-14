@@ -71,8 +71,8 @@ export default class Single extends Component {
       fetch(`/space/${this.state.post.space_id}`, {
             method: 'DELETE'
           })
-        // .then(() => console.log(this.state.post))
-        .then(() => this.getUser());;
+        .then(() => console.log(this.state.post))
+        .then(() => this.getUser());
     }
 
   render(){
@@ -87,7 +87,7 @@ export default class Single extends Component {
       }
 
       return (
-          <div className='body'>
+          <div className='body single'>
               <header>
                   <ul>
                       <li><i className="fa fa-camera" aria-hidden="true"></i></li>
@@ -95,27 +95,27 @@ export default class Single extends Component {
                      <Link to={`/user/1`}><li><i className="fas fa-user"></i></li></Link>
                   </ul>
               </header>
-              <div className='single'>
+              <div class="container">
                   <img className='image' src={image} />
                   <div className='tab'>
                       <div>
                         <i className="fa fa-globe" aria-hidden="true"></i>
                         <h1><b>{user}</b> {description} </h1>
                       </div>
-
+                      <br/>
+                      <div className="action">
                         <input name="description" placeholder="Edit me!"
                         onChange={this.edit}
                         ref="editMe" />
                         <div onClick={this.handleSubmit}><i className="fas fa-pencil-alt"></i></div>
                         <br/>
                        <Link to={`/user/1`}><div onClick={() => this.destroy(this.props.location.state.id)}><i className="fas fa-times"></i></div></Link>
+                       </div>
                   </div>
               </div>
 
-              <footer><i className="fas fa-arrow-left"></i></footer>
+              <Link to={`/user/1`}><footer><i className="fas fa-arrow-left"></i></footer></Link>
           </div>
       )
   }
 }
-
-

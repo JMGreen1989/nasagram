@@ -35,6 +35,7 @@ module.exports = {
       db.handleAddUser(req.body)
       .then(data => {
         res.locals.user = data.user;
+        console.log(res.locals.user)
         next();
       })
       .catch(err => {
@@ -123,9 +124,9 @@ module.exports = {
     },
 
     login(req, res, next) {
-        console.log('im in the controller in login')
+        // console.log('im in the controller in login')
         db.login(req.body)
-        console.log(req.body, ' this is the req.body')
+        console.log('this is req.body', req.body)
             .then(data => tokenService.makeToken({
                 id: data.id,
                 username: data.username

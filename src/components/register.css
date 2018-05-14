@@ -14,7 +14,7 @@
     padding-top: 1rem;
 }
 
-.container {
+.register .container {
     position: absolute;
     top: 30%;
     left: 0;
@@ -23,23 +23,23 @@
     height: 35vh;
 }
 
-h1 {
+.register h1 {
     text-align: center;
     width: 100%;
 }
 
-p {
+.register p {
     text-align: center;
     font-size: .8rem;
     color: rgba(0,0,0,.3);
 }
 
-form {
+.register form {
     text-align: center;
     padding: 1rem 0 1rem 0;
 }
 
-input {
+.register input {
     border: none;
     border-bottom: 1px solid rgba(0,0,0,.5);
     padding-bottom: .3rem;
@@ -52,7 +52,7 @@ input {
     color: rgba(0,0,0,.3);
 }
 
-button {
+.register button {
     padding: .5rem .9rem .5rem .9rem;
     margin-top: 1rem;
     background-color: transparent;

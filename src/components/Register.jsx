@@ -1,5 +1,6 @@
 import React from 'react'
 import './register.css';
+import { Link } from 'react-router-dom';
 
 export default class Register extends React.Component {
     constructor(props) {
@@ -24,7 +25,7 @@ export default class Register extends React.Component {
 
     render(){
         return(
-            <div className="body">
+            <div className="body register">
                 <div className="container">
                     <h1 className="new">Nasagram</h1>
                     <p>Sign up to see photos from Nasa</p>
@@ -37,7 +38,7 @@ export default class Register extends React.Component {
                         <br/>
                         <button type="submit">Register</button>
                     </form>
-                    <p>Have an account? Login in</p>
+                    <Link to="/user"><p>Have an account? Login in</p></Link>
                 </div>
             </div>
         )

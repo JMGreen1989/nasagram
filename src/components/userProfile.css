@@ -7,13 +7,13 @@
     overflow: hidden;
 }
 
-header ul {
+.user_profile header ul {
     display: flex;
     justify-content: space-around;
     margin: 1.5rem;
 }
 
-header {
+.user_profile header {
     position: fixed;
     top: 0;
     border-bottom: 1px solid rgba(0,0,0,.2);
@@ -22,29 +22,23 @@ header {
 }
 
 
-.fa-globe {
+.user_profile .fa-globe {
     font-size: 8rem;
 }
 
-.fa-user {
-    font-size: 1.2rem;
-    color: rgba(0,0,0,.2);
-    margin-right: .5rem;
-}
-
-.fa-heart {
+.user_profile .fa-heart {
     font-size: 1.2rem;
     color: rgba(0,0,0,.2);
     margin-top: .5rem;
 }
 
-.logo {
+.user_profile .logo {
     font-family: 'Oleo Script', cursive;
     font-size: 2.5rem;
     line-height: 1rem;
 }
 
-.fa-camera {
+.user_profile .fa-camera {
     font-size: 1.2rem;
     color: rgba(0,0,0,.2);
 }
@@ -71,7 +65,7 @@ header {
     font-size: .8rem;
 }
 
-h5 {
+.user_profile h5 {
     font-size: .8rem;
     text-align: center;
     padding: 1rem;
@@ -81,16 +75,18 @@ h5 {
     width: 100%
 }
 
-.username {
-    padding-right: 2rem;
+.user_profile .username {
+    padding: 2rem;
 }
 
-.username h1 {
+.user_profile .username h1 {
     font-family: 'Oleo Script', cursive;
     font-size: 4rem;
+    line-height: 3rem;
+    text-align: left;
 }
 
-.saved {
+.user_profile .saved {
     width: 60%;
     height: 55vh;
     overflow: scroll;
@@ -102,34 +98,81 @@ h5 {
     display: flex;
     flex-wrap: wrap;
     padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
-.image {
+.user_profile .image {
     height: 100%;
     width: 100%;
 }
 
-.container {
+.user_profile .saved .container {
     height: 200px;
-    width: 200px;
+    width: 47%;
+    top: 0%;
     background-color: white;
     margin: auto;
-    margin-bottom: 2rem;
+    margin: .5rem;
     position: relative!important;
 }
 
-.description {
+.user_profile .description {
     position: absolute;
     bottom: 0;
+    color: white;
 }
 
-.fa-search {
+.user_profile a {
+    color: rgba(0,0,0,.6);
+}
+
+.user_profile a:hover {
+    color: blue;
+}
+
+.user_profile .fa-search {
     margin-left: .5rem;
     color: rgba(0,0,0,.3);
 }
 
-.fa-eye {
+.user_profile .fa-search:hover {
+    color: blue;
+}
+
+.user_profile .fa-eye {
     margin-left: .5rem;
-    color: rgba(0,0,0,.3);
+    color: white;
     position: absolute;
+}
+
+@media only screen and (max-width: 900px) {
+    .user_profile .saved .container {
+        width: 100%;
+    }
+
+    .user_profile .fa-globe {
+        font-size: 5rem;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .dropzone div {
+        display: none!important;
+    }
+
+    .user_profile .username h1 {
+        font-size: 3rem;
+    }
+
+    .user_profile .username h2 {
+        font-size: .8rem;
+    }
+
+    .user_profile .fa-globe {
+        font-size: 4rem;
+    }
+
+    .user_profile .username {
+        padding: 1rem;
+    }
 }
