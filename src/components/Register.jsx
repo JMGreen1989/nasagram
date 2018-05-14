@@ -1,13 +1,18 @@
 import React from 'react'
 import './register.css';
-import { Link } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 export default class Register extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {};
+        this.state = {
+            username: '',
+            password: '',
+        };
 
         this.register = this.register.bind(this);
+        this.handleUsername = this.handleUsername.bind(this);
+        this.handlePassword = this.handlePassword.bind(this);
     }
 
     register(e){
@@ -16,29 +21,40 @@ export default class Register extends React.Component {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                'username': this.username.value,
-                'password': this.password.value
+                'username': this.state.username,
+                'password': this.state.password,
             })
         })
-        .then(() => console.log(this.username.value));
+        .then(() => {
+            this.props.history.push(`/login`)
+        });
     }
 
+    handlePassword(event) {
+        this.setState({ password: event.target.value })
+    }
+
+    handleUsername(event){
+        this.setState({ username: event.target.value })
+    }
+
+
     render(){
-        return(
+        return (
             <div className="body register">
                 <div className="container">
                     <h1 className="new">Nasagram</h1>
                     <p>Sign up to see photos from Nasa</p>
                     <form onSubmit={this.register}>
                         <input name="username" type="text" placeholder="Username"
-                        ref={(ref) => {this.username = ref}} />
+                        onChange={this.handleUsername}/>
                         <br/>
                         <input name="password" type="text" placeholder="Password"
-                        ref={(ref) => {this.password = ref}}/>
+                        onChange={this.handlePassword}/>
                         <br/>
-                        <button type="submit">Register</button>
+                        <button type="submit" >Register</button>
                     </form>
-                    <Link to="/user"><p>Have an account? Login in</p></Link>
+                    <Link to="/login"><p>Have an account? Login in</p></Link>
                 </div>
             </div>
         )

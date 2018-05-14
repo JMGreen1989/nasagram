@@ -59,7 +59,7 @@ module.exports = {
     },
 
     getCustomFeed(req, res, next){
-        db.joingTables(1)
+        db.joingTables(req.user.user_id)
         .then(data => {
             res.locals.customFeed = data.map((elem, i ) => (elem))
             next();

@@ -4,15 +4,14 @@ const bodyParser   = require('body-parser');
 const path         = require('path');
 const fetch        = require('node-fetch');
 const dotenv       = require('dotenv');
-const faveRouter       = require('./routes/router.js');
+const faveRouter   = require('./routes/router.js');
 const controller   = require('./controllers/controller');
-const authRouter   = require('./controllers/authRouter');
+const authRouter   = require('./routes/authRouter');
 dotenv.config();
 
 const app = express();
 
 const PORT = process.env.PORT || 3000;
-
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

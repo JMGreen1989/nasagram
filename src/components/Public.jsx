@@ -21,10 +21,6 @@ export default class Public extends Component {
           .catch(err => console.log(err))
     }
 
-    // componentWillMount(){
-    //     getSpace();
-    // }
-
     componentDidMount() {
         this.getSpace();
         setTimeout(() => this.setState({isLoading: false}), 6000);
