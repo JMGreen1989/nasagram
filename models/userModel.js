@@ -16,7 +16,6 @@ module.exports = {
         return db.one(`
         SELECT * FROM users
         WHERE username = $1
-        RETURNING *
         `, username);
-    },
+    }
 }

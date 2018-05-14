@@ -131,7 +131,8 @@ module.exports = {
                const { username, password } = req.body;
                const user = await dbUsers.findByUsername(username);
                const valid = bcrypt.compareSync(password, user.password);
-               debugger;
+               console.log('user:', user)
+               console.log('valid:', valid)
                if(!valid || !user) {
                    throw { message : 'wrong password'}
                }
@@ -142,6 +143,7 @@ module.exports = {
                res.locals.token = tokenService.makeToken({ user });
                next()
            } catch (err) {
+               console.log(err, ' something broke')
                next(err);
            }
    },
