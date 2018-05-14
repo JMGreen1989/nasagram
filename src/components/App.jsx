@@ -47,10 +47,10 @@ export default class App extends Component {
   render(){
       return (
           <div><Switch>
-                  <Route exact path='/user/1/api' component={UserAPI} />
-                  <Route exact path='/space/:space_id' component={Single} />
-                  <Route exact path='/user/1' component={UserProfile} />
-                  <Route exact path='/user' component={Login} />
+                  <Route exact path='/myFaves/:space_id' component={Single} />
+                  <Route exact path='/myFaves' component={UserProfile} />
+                  <Route exact path='/feed' component={UserAPI} />
+                  <Route exact path='/login' component={Login} />
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/' component={Public} />
               </Switch></div>

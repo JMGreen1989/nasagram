@@ -6,7 +6,7 @@ const saltRounds   = 10;
 
 module.exports = {
     createReference(req, res, next) {
-        db.createRef(1, res.locals.space_id)
+        db.createRef(req.user.user_id, res.locals.space_id)
           .then(data => {
             res.locals.refTable = data;
             next();
@@ -17,7 +17,7 @@ module.exports = {
     },
 
     destroyReference(req, res, next) {
-        db.deleteRef(1, req.params.space_id)
+        db.deleteRef(req.user.user_id, req.params.space_id)
             .then(() => next())
             .catch(err => next(err));
     },
@@ -104,10 +104,29 @@ module.exports = {
 
     // this is setting req.authToken
     receiveToken(req, res, next) {
-        if (req.headers.authorization) {
-            req.authToken = req.headers.authorization.replace(/^Bearer\s/, '');
+        if (!req.headers.authorization) {
+            return next();
         }
-        next();
+        const unverifiedToken = req.headers.authorization.replace(/^Bearer\s/, '');
+        return tokenService.verify(unverifiedToken, {iss: 'nasagram'}, (err, data) => {
+            req.tokenData=data
+            next()
+        })
+    },
+
+    async getUserFromToken(req, res, next){
+        if(!req.tokenData){
+            return next()
+        }
+        try {
+            req.user = await dbUsers.findByUsername(req.tokenData.user.username)
+            console.log(req.user)
+            return next()
+        }
+        catch(e) {
+            console.log(e)
+            return next()
+        }
     },
 
     // check for that token in recieveToken
