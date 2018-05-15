@@ -1,6 +1,7 @@
 import React from 'react';
 import './login.css';
 import { Link } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -13,7 +14,34 @@ export default class Login extends React.Component {
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.checkStatus = this.checkStatus.bind(this);
+        this.saveToken = this.saveToken.bind(this);
+        this.passingToken = this.passingToken.bind(this);
     }
+
+    saveToken(respBody) {
+        localStorage.setItem('authToken', respBody.token)
+        const user = jwtDecode(respBody.token);
+        console.log('this is the user in saveToken', user)
+        return user;
+    }
+
+    passingToken(){
+        var token = localStorage.getItem('authToken')
+        fetch('/api/token', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json',
+                       'Authorization': 'Bearer' + token},
+            body: JSON.stringify({
+                'username': token
+            })
+        })
+    }
+
+    checkStatus(resp) {
+        if (!resp.ok) throw new Error(resp.statusMessage);
+        return resp.json();
+  }
 
     handleInputChange(e) {
         this.setState({
@@ -23,19 +51,21 @@ export default class Login extends React.Component {
     }
 
     handleSubmit(e) {
+        var token = localStorage.getItem('authToken')
         e.preventDefault();
         fetch('/auth', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+             headers: {'Content-Type': 'application/json',
+                       'Authorization': 'Bearer' + token },
             body: JSON.stringify({
                 'username': this.username.value,
-                'password': this.password.value
+                'password': this.password.value,
             })
         })
+        .then(this.checkStatus)
+        .then(this.saveToken)
+        .then(this.passingToken)
 
-        .then((response) => response.json())
-        // .then(() => console.log(response, ' im the response'))
-        // .then(({data: {token}}) => console.log(token, ' im the response from than handle submit'))
         .then(() => {
             this.props.history.push(`/feed`)
         })

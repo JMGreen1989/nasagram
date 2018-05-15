@@ -17,5 +17,12 @@ module.exports = {
         SELECT * FROM users
         WHERE username = $1
         `, username);
+    },
+
+    getId(username) {
+        return db.one(`
+        SELECT user_id FROM users
+        WHERE username = $1
+        `, username);
     }
 }

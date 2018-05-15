@@ -9,6 +9,9 @@ router.route('/:space_id')
     .delete(controller.destroyImage, controller.destroyReference, resController.confirmDelete)
     .put(controller.update, resController.handleUpdate)
 
+router.route('/token')
+    .post(controller.receiveToken, controller.getUserFromToken)
+
 // user profile
 router.route('/')
     .get(controller.getCustomFeed, resController.customFeed)
