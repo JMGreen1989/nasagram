@@ -99,6 +99,7 @@ module.exports = {
 
     // this is setting req.authToken
     receiveToken(req, res, next) {
+        console.log('im in the recieveToken')
         if (!req.headers.authorization) {
             return next();
         }
@@ -110,20 +111,11 @@ module.exports = {
     },
 
     async getUserFromToken(req, res, next){
+        console.log('im in the getUserFromToken')
         if(!req.tokenData){
             return next()
         }
         try {
-            // this is the data that we need
-            // this holds:
-            //
-            // SELECT * FROM users
-            // WHERE username = 'wtf'
-            //
-            // user: { user_id: 46,
-            // username: 'wtf',
-            // password: '$2b$05$lg/Xf9Q4uxXyE09Y4O2I7uyJADmkyNNe.vEH/fZ30YWupzdH.yPr6' }
-            
             req.user = await dbUsers.findByUsername(req.tokenData.user.username)
             return next()
         }
