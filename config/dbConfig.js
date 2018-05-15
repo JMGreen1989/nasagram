@@ -1,5 +1,5 @@
 module.exports = process.env.DATABASE_URL || {
   host: 'localhost',
   port: 5432,
-  database: 'nasa_dev'
+  database: 'nasa_db'
 }
