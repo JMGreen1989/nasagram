@@ -65,7 +65,7 @@ export default class UserProfile extends Component {
                    <div className="description">
                        {elem.description}
                        <Link to={{
-                            pathname: `/space/${elem.space_id}`,
+                            pathname: `/myFaves/${elem.space_id}`,
                             state: {
                                 image: elem.image,
                                 description: elem.description,

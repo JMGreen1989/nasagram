@@ -6,8 +6,7 @@ const saltRounds   = 10;
 
 module.exports = {
     createReference(req, res, next) {
-        console.log('im the user: ', req.user)
-        db.createRef(req.user.user_id, res.locals.space_id)
+        db.createRef(1, res.locals.space_id)
           .then(data => {
             res.locals.refTable = data;
             next();
@@ -18,7 +17,7 @@ module.exports = {
     },
 
     destroyReference(req, res, next) {
-        db.deleteRef(req.user.user_id, req.params.space_id)
+        db.deleteRef(1, req.params.space_id)
             .then(() => next())
             .catch(err => next(err));
     },
@@ -58,7 +57,7 @@ module.exports = {
     },
 
     getCustomFeed(req, res, next){
-        db.joingTables(req.user.user_id)
+        db.joingTables(1)
         .then(data => {
             res.locals.customFeed = data.map((elem, i ) => (elem))
             next();
@@ -88,10 +87,8 @@ module.exports = {
     // AUTH STUFF
     async register(req, res, next) {
         req.body.hashword = await bcrypt.hash(req.body.password, 5)
-        console.log(req.body)
         dbUsers.handleAddUser(req.body)
             .then((user) => {
-                console.log('username', user)
                 next();
             })
             .catch(err => {
@@ -117,12 +114,21 @@ module.exports = {
             return next()
         }
         try {
+            // this is the data that we need
+            // this holds:
+            //
+            // SELECT * FROM users
+            // WHERE username = 'wtf'
+            //
+            // user: { user_id: 46,
+            // username: 'wtf',
+            // password: '$2b$05$lg/Xf9Q4uxXyE09Y4O2I7uyJADmkyNNe.vEH/fZ30YWupzdH.yPr6' }
+            
             req.user = await dbUsers.findByUsername(req.tokenData.user.username)
-            console.log(req.user)
             return next()
         }
-        catch(e) {
-            console.log(e)
+        catch(error) {
+            console.log(error)
             return next()
         }
     },

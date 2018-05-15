@@ -12,13 +12,11 @@ export default class Single extends Component {
      this.destroy = this.destroy.bind(this);
      this.space = this.space.bind(this);
      this.handleSubmit = this.handleSubmit.bind(this);
-     this.getUser = this.getUser.bind(this);
+     this.refreshFeed = this.refreshFeed.bind(this);
   }
 
   space() {
-    // fetch(`/space/1`)
-    console.log('this is props', this.props);
-    fetch(`/space/${this.props.match.params.space_id}`)
+    fetch(`/api/faves/${this.props.match.params.space_id}`)
             .then((response) => response.json())
             .then((post) => {
                 this.setState({
@@ -27,11 +25,11 @@ export default class Single extends Component {
         })
         .catch((err) => console.log(err))
 
-        this.getUser();
+        this.refreshFeed();
   }
 
-  getUser() {
-    fetch(`/user/1`)
+  refreshFeed() {
+    fetch(`/api/feed`)
             .then((response) => response.json())
             .then((user) => {
                 this.setState({
@@ -46,10 +44,10 @@ export default class Single extends Component {
     }
 
         edit(e) {
-          // debugger;
           e.persist();
           e.preventDefault();
-        fetch(`/space/${this.state.post.space_id}`, {
+
+        fetch(`/api/faves/${this.state.post.space_id}`, {
             method: 'PUT',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -68,11 +66,11 @@ export default class Single extends Component {
     }
 
     destroy() {
-      fetch(`/space/${this.state.post.space_id}`, {
+      fetch(`/api/faves/${this.state.post.space_id}`, {
             method: 'DELETE'
           })
         .then(() => console.log(this.state.post))
-        .then(() => this.getUser());
+        .then(() => this.refreshFeed());
     }
 
   render(){
