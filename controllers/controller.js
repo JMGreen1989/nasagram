@@ -1,5 +1,8 @@
-const db    = require('../models/model');
+const db           = require('../models/model');
+const dbUsers      = require('../models/userModel');
 const tokenService = require('../Services/tokenService');
+const bcrypt       = require('bcrypt');
+const saltRounds   = 10;
 
 module.exports = {
     createReference(req, res, next) {
@@ -31,11 +34,10 @@ module.exports = {
     },
 
 
-    addUser(req, res, next) {
-      db.handleAddUser(req.body)
+    async addUser(req, res, next) {
+      req.body.hasword = await bcrypt.hash(req.body.password, 5)
+      dbUsers.handleAddUser(req.body)
       .then(data => {
-        res.locals.user = data.user;
-        console.log(res.locals.user)
         next();
       })
       .catch(err => {
@@ -48,7 +50,6 @@ module.exports = {
             .then(data => {
                 res.locals.single = data;
                 next();
-                console.log('this is data in getImage', data)
             })
             .catch(err => {
                 next(err);
@@ -70,7 +71,6 @@ module.exports = {
       req.body.space_id = req.params.space_id
         db.update(req.body)
         .then(data => {
-          console.log('this is req.body.space_id', req.body.space_id)
             res.locals.newItem = data
             next();
 
@@ -85,60 +85,89 @@ module.exports = {
     },
 
     // AUTH STUFF
-
-    register(req, res) {
-        console.log('inside register', req.body, res.locals)
-        db.handleAddUser(req.body)
-            .then(data => tokenService.makeToken({
-                user_id: data.user_id,
-                username: data.username
-            }))
-            .then(token => {
-            console.log('this is the token', token)
-                res.json({
-                        token
-                    })
-                })
-            .catch(err => res.status(401).json({
-                message: 'Username taken'
-            }))
+    async register(req, res, next) {
+        req.body.hashword = await bcrypt.hash(req.body.password, 5)
+        dbUsers.handleAddUser(req.body)
+            .then((user) => {
+                next();
+            })
+            .catch(err => {
+                console.log('theres an err, sorry', err)
+                next(err)
+            })
     },
 
+    // this is setting req.authToken
     receiveToken(req, res, next) {
-        if (req.headers.authorization) {
-            req.authToken = req.headers.authorization.replace(/^Bearer\s/, '');
+        if (!req.headers.authorization) {
+            return next();
         }
-        next();
+        const unverifiedToken = req.headers.authorization.replace(/^Bearer\s/, '');
+        return tokenService.verify(unverifiedToken, {iss: 'nasagram'}, (err, data) => {
+            req.tokenData=data
+            next()
+        })
     },
 
-    restrict(req, res, next) {
+    async getUserFromToken(req, res, next){
+        if(!req.tokenData){
+            return next()
+        }
+        try {
+            // this is the data that we need
+            // this holds:
+            //
+            // SELECT * FROM users
+            // WHERE username = 'wtf'
+            //
+            // user: { user_id: 46,
+            // username: 'wtf',
+            // password: '$2b$05$lg/Xf9Q4uxXyE09Y4O2I7uyJADmkyNNe.vEH/fZ30YWupzdH.yPr6' }
+            
+            req.user = await dbUsers.findByUsername(req.tokenData.user.username)
+            return next()
+        }
+        catch(error) {
+            console.log(error)
+            return next()
+        }
+    },
+
+    // check for that token in recieveToken
+    isLoggedin(req, res, next) {
         tokenService.verify(req.authToken)
-            .then(data => {
-        res.locals.user = data;
+        .then(data => {
+            console.log('ive been verified: ', data)
+            res.send(data)
             next();
         })
         .catch(err => res.status(401).json({
-            status: 'Error',
-            message: 'Invalid credentials'
+            status: 'error',
+            message: 'invalid creds'
         }))
     },
 
-    login(req, res, next) {
-        // console.log('im in the controller in login')
-        db.login(req.body)
-        console.log('this is req.body', req.body)
-            .then(data => tokenService.makeToken({
-                id: data.id,
-                username: data.username
-            }))
-            .then(token => {
-                res.json({
-                    token
-                })
-            })
-            .catch(err => res.status(401).json({
-                status: 'Error',
-                message: 'Invalid credentails'
-            }))
-    },
+
+    // handle logging in
+     async authenticate(req, res, next) {
+           try {
+               const { username, password } = req.body;
+               const user = await dbUsers.findByUsername(username);
+               const valid = bcrypt.compareSync(password, user.password);
+               console.log('user:', user)
+               console.log('valid:', valid)
+               if(!valid || !user) {
+                   throw { message : 'wrong password'}
+               }
+
+               delete user.user_id
+               delete user.password
+
+               res.locals.token = tokenService.makeToken({ user });
+               next()
+           } catch (err) {
+               console.log(err, ' something broke')
+               next(err);
+           }
+   },
 }

@@ -1,6 +1,4 @@
-const db         = require ('../config/connection');
-const bcrypt     = require('bcrypt');
-const saltRounds = 10;
+const db = require ('../config/connection');
 
 module.exports = {
     createRef(user_id, space_id){
@@ -32,53 +30,6 @@ module.exports = {
         `, id);
     },
 
-    handleAddUser(credentials) {
-      console.log('this is credentials', credentials)
-      bcrypt.hash(credentials.password, saltRounds)
-      .then(hash => {
-          console.log(hash, ' im the hash')
-        credentials = {
-          username: credentials.username,
-          password: hash
-        }
-
-        return db.one(`
-                INSERT INTO users (
-                username, password
-                ) VALUES (
-                $/username/, $/password/
-                )
-                 RETURNING user_id, username
-          `, credentials);
-      })
-      // console.log('hashed', newUser)
-
-    },
-
-    findByUsername(username) {
-      console.log('this is the username:', username)
-        return db.one(`
-        SELECT * FROM users
-        WHERE username = $1
-        `, username);
-    },
-
-    login(credentials) {
-      console.log('im in models this is creds:', credentials)
-        return this.findByUsername(credentials.username)
-            .then(user => (
-        // compare the provided password with the password digest
-        bcrypt.compare(credentials.password, user.password)
-        // match is a boolean if hashing the provided password
-        // matches the hashed password
-        .then(match => {
-            if (!match) throw new Error('Credentials do not match');
-            delete user.password;
-            return user;
-            })
-        ));
-    },
-
     handleSubmit(image) {
         return db.one(`
                 INSERT INTO space
@@ -97,7 +48,6 @@ module.exports = {
     },
 
     update(space_id) {
-      console.log('this is the space_id in models update:', space_id)
         return db.one(`
                 UPDATE space
                 SET

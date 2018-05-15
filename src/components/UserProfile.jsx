@@ -22,7 +22,7 @@ export default class UserProfile extends Component {
           files: formatedFiles
         });
 
-        fetch('/user/1', {
+        fetch('/api/faves', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -43,7 +43,7 @@ export default class UserProfile extends Component {
     }
 
     getUser() {
-        fetch(`/user/1`)
+        fetch(`/api/faves`)
             .then((response) => response.json())
             .then((user) => {
                 this.setState({
@@ -65,7 +65,7 @@ export default class UserProfile extends Component {
                    <div className="description">
                        {elem.description}
                        <Link to={{
-                            pathname: `/space/${elem.space_id}`,
+                            pathname: `/myFaves/${elem.space_id}`,
                             state: {
                                 image: elem.image,
                                 description: elem.description,
@@ -86,7 +86,7 @@ export default class UserProfile extends Component {
                     <ul>
                         <li><i className="fa fa-camera" aria-hidden="true"></i></li>
                         <li className='logo'>Nasagram</li>
-                        <Link to={`/user/1/api`}><li><i className="fas fa-search"></i></li></Link>
+                        <Link to={`/feed`}><li><i className="fas fa-search"></i></li></Link>
                     </ul>
                 </header>
                 <div className="profile">
