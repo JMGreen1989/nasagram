@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './userAPI.css';
+import './UserAPI.css';
 import { Link } from 'react-router-dom';
 import ReactLoading from 'react-loading';
 import { Section, Title, Article, Prop, list } from "./Loader";

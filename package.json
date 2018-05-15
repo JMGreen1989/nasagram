@@ -4,7 +4,9 @@
   "description": "a skeleton node server, delivering react",
   "engines": {
     "node": "10.1.0",
-    "npm": "5.6.0"
+    "npm": "5.6.0",
+    "yarn": "1.6.0"
+
   },
   "main": "server.js",
   "author": "Rover team 6",
@@ -73,7 +75,7 @@
     "build-dev": "concurrently \"webpack -d --watch --mode development\" \"nodemon server.js\"",
     "build-watch": "webpack -d --progress --watch --mode development",
     "clean": "rm -rf dist && rm -rf node_modules",
-    "heroku-prebuild": "scripts/deployment_react.sh",
+    "postinstall": "webpack -p --mode production",
     "heroku-postbuild": "scripts/deployment_cleanup.sh"
   },
   "keywords": [],
