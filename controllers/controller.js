@@ -6,6 +6,7 @@ const saltRounds   = 10;
 
 module.exports = {
     createReference(req, res, next) {
+        console.log(res.locals.userID, ' llooooooookkkk im inside the createReference')
         db.createRef(1, res.locals.space_id)
           .then(data => {
             res.locals.refTable = data;
@@ -99,24 +100,31 @@ module.exports = {
 
     // this is setting req.authToken
     receiveToken(req, res, next) {
-        console.log('im in the recieveToken')
         if (!req.headers.authorization) {
             return next();
         }
-        const unverifiedToken = req.headers.authorization.replace(/^Bearer\s/, '');
+        console.log('I MADE IT THROUGHHHHHHHHHHH', req.headers.authorization)
+
+        const unverifiedToken = req.headers.authorization.replace(/^Bearer/, '');
+        console.log('I MADE IT THROUGHHHHHHHHHHH: unverified token ', unverifiedToken)
         return tokenService.verify(unverifiedToken, {iss: 'nasagram'}, (err, data) => {
             req.tokenData=data
+            console.log(req.tokenData, ' im inside the receiveToken')
             next()
         })
     },
 
     async getUserFromToken(req, res, next){
-        console.log('im in the getUserFromToken')
+
         if(!req.tokenData){
             return next()
         }
+
         try {
-            req.user = await dbUsers.findByUsername(req.tokenData.user.username)
+            req.user = await dbUsers.getId(req.tokenData.user.username)
+            res.locals.userID = req.user.user_id
+            console.log(res.locals.userID, ' llooooooookkkk here')
+            
             return next()
         }
         catch(error) {

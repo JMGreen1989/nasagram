@@ -16,6 +16,7 @@ export default class Login extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.checkStatus = this.checkStatus.bind(this);
         this.saveToken = this.saveToken.bind(this);
+        this.passingToken = this.passingToken.bind(this);
     }
 
     saveToken(respBody) {
@@ -26,13 +27,13 @@ export default class Login extends React.Component {
     }
 
     passingToken(){
-        var usernameFromToken = localStorage.getItem('authToken')
+        var token = localStorage.getItem('authToken')
         fetch('/api/token', {
             method: 'POST',
             headers: {'Content-Type': 'application/json',
-                       'Authorization': 'Bearer' + usernameFromToken},
+                       'Authorization': 'Bearer' + token},
             body: JSON.stringify({
-                'username': usernameFromToken
+                'username': token
             })
         })
     }
@@ -50,22 +51,21 @@ export default class Login extends React.Component {
     }
 
     handleSubmit(e) {
+        var token = localStorage.getItem('authToken')
         e.preventDefault();
         fetch('/auth', {
             method: 'POST',
              headers: {'Content-Type': 'application/json',
-                       'Authorization': 'Bearer' },
+                       'Authorization': 'Bearer' + token },
             body: JSON.stringify({
                 'username': this.username.value,
-                'password': this.password.value
+                'password': this.password.value,
             })
         })
         .then(this.checkStatus)
         .then(this.saveToken)
-        // .then(() => console.log('this is user in handleSubmit', user))
-        // .then((response) => response.json())
-        // .then(() => console.log(response, ' im the response'))
-        // .then(({data: {token}}) => console.log(token, ' im the response from than handle submit'))
+        .then(this.passingToken)
+
         .then(() => {
             this.props.history.push(`/feed`)
         })

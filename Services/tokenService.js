@@ -15,11 +15,13 @@ module.exports = {
     },
 
     verify(token, claims, cb) {
+        console.log(token, ' im in the verify')
        jwt.verify(
          token,
          secret,
          claims,
          cb
        )
+       console.log(token, ' im in the verify, should return boolean')
     },
 }
