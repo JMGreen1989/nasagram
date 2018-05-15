@@ -27,7 +27,7 @@ export default class UserAPI extends Component {
 
     componentDidMount() {
         this.getSpace();
-        setTimeout(() => this.setState({isLoading: false}), 15000);
+        setTimeout(() => this.setState({isLoading: false}), 60000);
     }
 
     save(i){
