@@ -1,4 +1,4 @@
-\c nasa_db
+
 
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS space CASCADE;

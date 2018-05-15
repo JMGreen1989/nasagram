@@ -1,5 +1,3 @@
-\c nasa_db
-
 INSERT INTO users(
  username, password
 ) VALUES (
