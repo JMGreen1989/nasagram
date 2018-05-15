@@ -2,7 +2,6 @@ const express      = require('express');
 const logger       = require('morgan');
 const bodyParser   = require('body-parser');
 const path         = require('path');
-const fetch        = require('node-fetch');
 const dotenv       = require('dotenv');
 const faveRouter   = require('./routes/router.js');
 const controller   = require('./controllers/controller');
