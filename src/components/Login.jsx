@@ -1,6 +1,7 @@
 import React from 'react';
 import './login.css';
 import { Link } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -34,8 +35,8 @@ export default class Login extends React.Component {
         })
 
         .then((response) => response.json())
-        // .then(() => console.log(response, ' im the response'))
-        // .then(({data: {token}}) => console.log(token, ' im the response from than handle submit'))
+        .then((response) => jwtDecode(response.token))
+        .then((response) => localStorage.setItem('user', response))
         .then(() => {
             this.props.history.push(`/feed`)
         })
