@@ -43,7 +43,7 @@ export default class Single extends Component {
         this.space();
     }
 
-        edit(e) {
+    edit(e) {
           e.persist();
           e.preventDefault();
 
